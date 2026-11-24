@@ -264,6 +264,18 @@ dialog.ed::backdrop{background:rgba(8,8,10,.82)}
 @media (max-width:640px){.r27g{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .cnw{display:inline-flex;align-items:center;gap:10px}
+/* live data (bản GitHub) */
+.livebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 12px;font-size:14.5px;color:var(--muted)}
+.livebar .dot{width:10px;height:10px;border-radius:50%;background:#15803d;flex:none}
+.livebar.off .dot{background:var(--orange)}
+.livebar a{color:var(--orange-ink)}
+.livebar button{font:700 14px var(--display);background:var(--panel);border:1px solid var(--line);padding:4px 10px;min-height:34px;cursor:pointer}
+.livebar button:hover{border-color:var(--ink)}
+.recent{background:var(--panel);border:1px solid var(--line);margin:0 0 16px}
+.recent .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);color:#fff;padding:10px 16px}
+.recent .hd h3{font-size:1.05rem}
+.recent .hd span{font-size:12.5px;color:#c2c2c8}
+.recent .games{padding:10px 12px}
 /* year 2026 summary */
 .y26{background:var(--ink);color:#fff;padding:16px 18px 18px;margin-bottom:18px;border-top:4px solid var(--orange)}
 .y26-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
@@ -785,18 +797,20 @@ dialog.ytd::backdrop{background:rgba(8,8,10,.9)}
 
   <section id="stats">
     <div class="sec-h"><div class="lower"><span class="k">04</span><h2>Chỉ số sự nghiệp</h2></div></div>
+    <p class="livebar" id="liveBar" role="status" hidden></p>
     <div class="kpis">
-      <div class="kpi cut"><small>SỐ VÁN</small><b>859</b><span>552 thắng · 307 thua</span></div>
-      <div class="kpi cut"><small>TỈ LỆ THẮNG</small><b>64,3%</b><div class="m"><i style="width:64.3%"></i></div></div>
-      <div class="kpi cut"><small>KDA</small><b>4,5</b><span>Trung bình mọi ván</span></div>
-      <div class="kpi cut"><small>SÁT THƯƠNG / PHÚT</small><b>657,3</b><span>26,7% sát thương của đội</span></div>
+      <div class="kpi cut"><small>SỐ VÁN</small><b id="kGames">859</b><span id="kWL">552 thắng · 307 thua</span></div>
+      <div class="kpi cut"><small>TỈ LỆ THẮNG</small><b id="kWR">64,3%</b><div class="m"><i id="kWRbar" style="width:64.3%"></i></div></div>
+      <div class="kpi cut"><small>KDA</small><b id="kKDA">4,5</b><span id="kKDAsub">Trung bình mọi ván</span></div>
+      <div class="kpi cut"><small>SÁT THƯƠNG / PHÚT</small><b id="kDPM">657,3</b><span id="kDPMsub">26,7% sát thương của đội</span></div>
     </div>
     <div class="minis">
-      <div><small>Tham gia hạ gục</small><b>66,8%</b></div>
-      <div><small>Lính / phút</small><b>9,7</b></div>
-      <div><small>Vàng / phút</small><b>464</b></div>
-      <div><small>Tầm nhìn / phút</small><b>1,41</b></div>
+      <div><small>Tham gia hạ gục</small><b id="kKP">66,8%</b></div>
+      <div><small>Lính / phút</small><b id="kCS">9,7</b></div>
+      <div><small>Vàng / phút</small><b id="kGold">464</b></div>
+      <div><small>Tầm nhìn / phút</small><b id="kVS">1,41</b></div>
     </div>
+    <div class="recent" id="recent" hidden></div>
     <div class="board">
       <div class="hd"><h3>10 TƯỚNG CHƠI NHIỀU NHẤT</h3><span>Xanh lá: thắng từ 70%</span></div>
       <div class="tablebox"><table class="champs" id="champTable">
@@ -1008,6 +1022,73 @@ document.addEventListener("DOMContentLoaded",()=>{
     dlg.addEventListener("close",()=>{ dlg.querySelector(".yt-frame").innerHTML=""; });
   }
 });
+
+/* Số liệu trực tiếp từ Leaguepedia (Cargo API, cho phép gọi từ trình duyệt). Lưu tạm 6 giờ trong trình duyệt. */
+(function(){
+  const API="https://lol.fandom.com/api.php", KEY="guma-live-v1", TTL=6*3600*1000;
+  const FIELDS="SP.Champion=c,SP.Kills=k,SP.Deaths=d,SP.Assists=a,SP.PlayerWin=w,SP.DateTime_UTC=dt,SP.OverviewPage=ov,SP.Team=team,SP.Side=side,SP.DamageToChampions=dmg,SP.CS=cs,SP.Gold=gold,SP.VisionScore=vs,SG.Gamelength_Number=len,SG.Team1Kills=t1k,SG.Team2Kills=t2k,SG.Team1=t1,SG.Team2=t2";
+  async function page(offset){
+    const p=new URLSearchParams({action:"cargoquery",format:"json",origin:"*",tables:"ScoreboardPlayers=SP,ScoreboardGames=SG",join_on:"SP.GameId=SG.GameId",fields:FIELDS,where:"SP.Link='Gumayusi'",order_by:"SP.DateTime_UTC DESC",limit:"500",offset:String(offset)});
+    const r=await fetch(API+"?"+p.toString()); if(!r.ok) throw new Error("HTTP "+r.status);
+    const j=await r.json(); if(j.error) throw new Error(j.error.info||"API error");
+    return (j.cargoquery||[]).map(x=>x.title);
+  }
+  async function load(force){
+    if(!force){ try{ const c=JSON.parse(localStorage.getItem(KEY)||"null"); if(c&&Date.now()-c.t<TTL&&Array.isArray(c.rows)&&c.rows.length) return c; }catch(_){} }
+    let rows=[]; for(let o=0;o<5000;o+=500){ const r=await page(o); rows=rows.concat(r); if(r.length<500) break; }
+    const c={t:Date.now(),rows}; try{ localStorage.setItem(KEY,JSON.stringify(c)); }catch(_){}
+    return c;
+  }
+  const num=v=>{ const n=parseFloat(v); return isFinite(n)?n:null; };
+  const vn1=(v,d)=>v.toFixed(d).replace(".",",");
+  const idOf=n=>String(n||"").replace(/[\s'.&]/g,"");
+  function setText(id,t){ const e=document.getElementById(id); if(e) e.textContent=t; }
+  function apply(c){
+    const R=c.rows; if(!R.length) return;
+    const n=R.length, w=R.filter(r=>r.w==="Yes").length;
+    let K=0,D=0,A=0, dmg=0,dl=0, cs=0,gold=0,ml=0, vs=0,vl=0, kpN=0,kpD=0;
+    R.forEach(r=>{ const k=num(r.k)||0,d=num(r.d)||0,a=num(r.a)||0,len=num(r.len); K+=k;D+=d;A+=a;
+      if(len){ if(num(r.dmg)!=null){dmg+=num(r.dmg);dl+=len;} if(num(r.cs)!=null&&num(r.gold)!=null){cs+=num(r.cs);gold+=num(r.gold);ml+=len;} if(num(r.vs)!=null){vs+=num(r.vs);vl+=len;} }
+      const tk=r.side==="1"?num(r.t1k):r.side==="2"?num(r.t2k):null; if(tk){ kpN+=k+a; kpD+=tk; } });
+    setText("kGames",String(n)); setText("kWL",`${w} thắng · ${n-w} thua`);
+    setText("kWR",vn1(w/n*100,1)+"%"); const bar=document.getElementById("kWRbar"); if(bar) bar.style.width=(w/n*100).toFixed(1)+"%";
+    setText("kKDA",vn1((K+A)/Math.max(1,D),2)); setText("kKDAsub",`${K}/${D}/${A} cả sự nghiệp`);
+    if(dl){ setText("kDPM",vn1(dmg/dl,1)); setText("kDPMsub","Tính trên tổng sát thương và thời lượng"); }
+    if(kpD) setText("kKP",vn1(kpN/kpD*100,1)+"%");
+    if(ml){ setText("kCS",vn1(cs/ml,1)); setText("kGold",String(Math.round(gold/ml))); }
+    if(vl) setText("kVS",vn1(vs/vl,2));
+    /* 10 tướng chơi nhiều nhất */
+    const by={}; R.forEach(r=>{ const id=idOf(r.c); if(!id) return; const o=by[id]||(by[id]={n:id,g:0,w:0,k:0,d:0,a:0,name:r.c}); o.g++; if(r.w==="Yes") o.w++; o.k+=num(r.k)||0; o.d+=num(r.d)||0; o.a+=num(r.a)||0; });
+    const top=Object.values(by).sort((x,y)=>y.g-x.g||y.w-x.w).slice(0,10);
+    if(typeof CHAMPS!=="undefined"&&typeof renderChampTable==="function"&&top.length){
+      top.forEach(o=>{ if(!CNAME[o.n]&&o.name!==o.n) CNAME[o.n]=o.name; });
+      CHAMPS.length=0; top.forEach(o=>CHAMPS.push({n:o.n,g:o.g,wr:o.w/o.g*100,kda:(o.k+o.a)/Math.max(1,o.d)}));
+      renderChampTable();
+    }
+    const heroWR=[...document.querySelectorAll(".herobar .st")].find(s=>/TỈ LỆ THẮNG/.test(s.textContent));
+    if(heroWR){ heroWR.querySelector("b").textContent=vn1(w/n*100,1)+"%"; const sp=heroWR.querySelector("span"); if(sp) sp.textContent=n+" ván"; }
+    /* 6 ván gần nhất */
+    const box=document.getElementById("recent");
+    if(box){ box.textContent=""; const hd=el("div","hd"); hd.append(el("h3",null,"6 VÁN GẦN NHẤT"), el("span",null,"Leaguepedia")); box.appendChild(hd);
+      const ol=el("ol","games");
+      R.slice(0,6).forEach(r=>{ const win=r.w==="Yes", opp=r.team===r.t1?r.t2:r.t1, len=num(r.len), id=idOf(r.c);
+        const li=el("li","gm "+(win?"gw":"gl")); li.appendChild(champEl(id));
+        const d=new Date(String(r.dt).replace(" ","T")+"Z");
+        const tx=el("div","gm-t"); tx.append(el("small",null,`${isNaN(d)?"":d.toLocaleDateString("vi-VN")} · ${win?"Thắng":"Thua"} vs ${opp||"?"}`), el("b",null,r.c), el("span",null,`${r.k}/${r.d}/${r.a}${len&&num(r.dmg)!=null?" · "+Math.round(num(r.dmg)/len)+" DPM":""}`));
+        li.appendChild(tx); ol.appendChild(li); });
+      box.appendChild(ol); box.hidden=false; }
+  }
+  function bar(state,c,err){
+    const b=document.getElementById("liveBar"); if(!b) return; b.hidden=false; b.textContent=""; b.className="livebar"+(state==="ok"?"":" off");
+    b.appendChild(el("span","dot"));
+    if(state==="loading") b.append("Đang lấy số liệu mới nhất từ Leaguepedia…");
+    else if(state==="ok"){ const t=new Date(c.t); b.append(`Số liệu trực tiếp từ `); const a=el("a",null,"Leaguepedia"); a.href="https://lol.fandom.com/wiki/Gumayusi/Match_History"; a.target="_blank"; a.rel="noopener"; b.appendChild(a); b.append(` · ${c.rows.length} ván · cập nhật ${t.toLocaleString("vi-VN",{hour:"2-digit",minute:"2-digit",day:"2-digit",month:"2-digit"})}`);
+      const rb=el("button",null,"Làm mới"); rb.type="button"; rb.onclick=()=>run(true); b.appendChild(rb); }
+    else { b.append("Chưa kết nối được Leaguepedia, đang hiện số liệu gol.gg ngày 24/11/2026."); const rb=el("button",null,"Thử lại"); rb.type="button"; rb.onclick=()=>run(true); b.appendChild(rb); }
+  }
+  async function run(force){ bar("loading"); try{ const c=await load(force); apply(c); bar("ok",c); }catch(e){ bar("err",null,e); } }
+  document.addEventListener("DOMContentLoaded",()=>run(false));
+})();
 </script>
 <script>
 const CHAMPS=[
