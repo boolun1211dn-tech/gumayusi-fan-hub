@@ -1,0 +1,1602 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Trang fan Gumayusi: danh hiệu, mùa 2026, chỉ số, pentakill và ảnh.">
+<title>Gumayusi Fan Hub</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: đồ hoạ livestream LCK — thanh đen + khối cam vát góc, dải tin chạy, thẻ tuyển thủ đen bên trái, bảng số liệu bên phải; các mục bên dưới mở đầu bằng "lower-third". Một giao diện sáng cố định. */
+:root{
+  color-scheme:light;
+  --paper:#efeeea; --panel:#ffffff; --ink:#0f0f10; --ink-2:#1d1d20; --muted:#55555c; --line:#d9d7d1;
+  --orange:#f37021; --orange-ink:#b0440a; --orange-soft:#fde3d2; --live:#e11d48; --gold:#e0b03a; --green:#15803d; --red:#c2262d;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --body:"Nunito",ui-rounded,"Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --cut:18px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.7;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:700}
+a{color:var(--orange-ink)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+.num{font-family:var(--display);font-variant-numeric:tabular-nums}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cut{clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%)}
+
+/* top bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--ink);color:#fff}
+.topbar .in{display:flex;align-items:stretch;min-height:50px;padding-right:max(0px,env(safe-area-inset-right,0px))}
+.brand{display:flex;align-items:center;background:var(--orange);color:var(--ink);font-family:var(--display);font-weight:800;font-style:italic;font-size:24px;letter-spacing:.03em;padding:0 44px 0 max(18px,env(safe-area-inset-left,0px));clip-path:polygon(0 0,100% 0,calc(100% - 22px) 100%,0 100%);text-decoration:none;white-space:nowrap}
+.menu{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.menu a{display:flex;align-items:center;padding:0 12px;color:#d8d8dc;text-decoration:none;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.02em;white-space:nowrap;border-bottom:3px solid transparent;transition:color .2s,border-color .2s}
+.menu a:hover{color:#fff;border-bottom-color:var(--orange)}
+.nbbtn{display:flex;align-items:center;gap:8px;background:#26262b;color:#fff;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.06em;padding:0 18px;text-decoration:none;white-space:nowrap;border-left:3px solid var(--orange);transition:background-color .2s,color .2s}
+.nbbtn:hover{background:var(--orange);color:var(--ink)}
+.burger{display:none;align-items:center;justify-content:center;width:52px;background:none;border:0;color:#fff;cursor:pointer}
+.burger .ic{width:24px;height:24px}
+@media (max-width:860px){
+  .burger{display:flex}
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:var(--ink);border-top:1px solid #2c2c31;padding-bottom:8px;max-height:calc(100vh - 60px);overflow:auto}
+  .menu.open{display:flex}
+  .menu a{padding:12px max(18px,env(safe-area-inset-left,0px));border-bottom:1px solid #222;border-left:3px solid transparent;min-height:48px}
+  .menu a:hover{border-bottom-color:#222;border-left-color:var(--orange)}
+  .topbar .in{position:relative;justify-content:space-between}
+  .nbbtn{margin-left:auto}
+}
+
+/* ticker */
+.ticker{background:var(--orange);color:var(--ink);overflow:hidden;font-family:var(--display);font-weight:600;font-size:14px;border-bottom:2px solid var(--ink)}
+.ticker .track{display:flex;gap:48px;white-space:nowrap;padding:8px 0;width:max-content}
+.ticker span{display:inline-flex;align-items:center;gap:10px}
+.ticker b{background:var(--ink);color:var(--orange);padding:1px 8px;font-size:12px;letter-spacing:.08em}
+@media (prefers-reduced-motion:no-preference){.ticker .track{animation:tick 42s linear infinite}.ticker:hover .track{animation-play-state:paused}}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* photo slot */
+.slot{position:relative;overflow:hidden;background:var(--ink-2);color:#8b8b93}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slot .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:12px;font-size:13px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 12px,transparent 12px 24px)}
+.slot .ph svg{width:64px;height:64px;opacity:.55}
+.slot .tools{position:absolute;right:10px;bottom:10px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.slot .up{display:inline-flex;align-items:center;gap:6px;background:rgba(15,15,16,.82);color:#fff;border:1px solid rgba(255,255,255,.25);font:600 13px var(--display);padding:7px 12px;min-height:36px;cursor:pointer;transition:background-color .2s,border-color .2s}
+.slot .up:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.slot .up .ic{width:15px;height:15px}
+.slot .busy{position:absolute;inset:0;display:grid;place-items:center;background:rgba(15,15,16,.7);color:#fff;font:600 14px var(--display)}
+
+/* hero */
+.hero{padding-block:28px 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:28px;align-items:start}
+.pcard{background:var(--ink);color:#fff;--cut:34px}
+.pcard .slot{aspect-ratio:4/5;background:linear-gradient(180deg,#f37021 0%,#7a2f06 100%);color:#fff}
+.pcard .slot .ph{background:repeating-linear-gradient(135deg,rgba(255,255,255,.08) 0 12px,transparent 12px 24px)}
+.pcard .meta{padding:16px 20px 30px;display:grid;gap:2px}
+.pcard .meta small{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:#f9a66b}
+.pcard h1{font-size:clamp(2.6rem,6vw,3.4rem);font-style:italic;font-weight:900;letter-spacing:.01em}
+.pcard .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pcard .row span{font-size:12.5px;background:#26262b;padding:3px 9px}
+.side{display:grid;gap:18px;min-width:0}
+.lower{display:flex;align-items:stretch;min-width:0}
+.lower .k{background:var(--orange);color:var(--ink);font:700 18px var(--display);letter-spacing:.08em;padding:6px 14px;display:flex;align-items:center;white-space:nowrap}
+.lower h2{background:var(--ink);color:#fff;font-size:clamp(1.55rem,3.2vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.02em;padding:6px 30px 6px 16px;clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%);min-width:0}
+.lead{margin:0;color:var(--muted);max-width:64ch}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.st{background:var(--panel);border-left:5px solid var(--orange);padding:12px 14px}
+.st small{display:block;font:700 14px var(--mono);letter-spacing:.1em;color:var(--muted)}
+.st b{display:block;font:700 2.7rem/1.05 var(--display)}
+.st span{font-size:12.5px;color:var(--muted)}
+.status27{background:var(--ink);color:#fff;padding:14px 18px 16px;border-left:5px solid var(--orange)}
+.s-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.s-k{font:700 14px var(--mono);letter-spacing:.14em;color:#f9a66b}
+.s-edit{font:700 15px var(--display);letter-spacing:.04em;background:#26262b;color:#fff;border:1px solid #3a3a41;padding:4px 12px;min-height:36px;cursor:pointer;transition:background-color .2s}
+.s-edit:hover{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.s-empty{margin:0;color:#a7a7ae;font-size:15px}
+.s-main{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.s-main b{font:700 28px var(--display);line-height:1.1}
+.s-pill{font:700 13px var(--display);letter-spacing:.08em;background:var(--orange);color:var(--ink);padding:2px 10px}
+.s-note{margin:6px 0 0;color:#d1d1d6;font-size:15px;white-space:pre-wrap}
+.s-meta{margin:6px 0 0;font-size:13px;color:#a7a7ae}
+.s-meta a{color:#f9a66b}
+.s-form{display:grid;gap:10px;margin-top:8px}
+.s-form label{font-size:13px;color:#c2c2c8;display:grid;gap:4px}
+.s-form input,.s-form select,.s-form textarea{background:#1d1d21;color:#fff;border-color:#3a3a41}
+.s-form textarea{min-height:64px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--panel);border:1px solid var(--line)}
+.facts div{padding:10px 14px;border-right:1px solid var(--line)}
+.facts div:last-child{border-right:0}
+.facts small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.facts b{font-family:var(--display);font-size:1.05rem}
+
+/* sections */
+main{display:flex;flex-direction:column;gap:56px;padding-bottom:64px}
+.sec-h{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 20px;margin-bottom:18px}
+.sec-h p{margin:0;color:var(--muted);font-size:14.5px;max-width:60ch}
+.src{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* trophies */
+.cups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tier{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bt{font:900 11px var(--display);letter-spacing:.1em;padding:2px 8px;color:var(--ink)}
+.t-w{background:var(--gold)}
+.t-m{background:#d9dde3}
+.t-h{background:var(--orange)}
+.t-e{background:#7dd3b0}
+.t-l{background:#fff}
+.fmvp{font:800 11px var(--display);letter-spacing:.08em;color:var(--gold);border:1px solid var(--gold);padding:1px 7px}
+.cup{background:var(--ink);color:#fff;--cut:24px;display:flex;flex-direction:column}
+.cup .slot{aspect-ratio:4/3}
+.cup .slot .ph{background:radial-gradient(ellipse at 50% 38%,#4a3710 0%,#1f180a 45%,#121110 80%);color:#e9c46a;font-size:13.5px}
+.cup .slot .ph svg{color:var(--gold);fill:url(#goldGrad);stroke:none;opacity:1;width:84px;height:104px;filter:drop-shadow(0 6px 18px rgba(224,176,58,.35))}
+.cup .slot .ph svg path[stroke]{stroke:#e9c46a}
+.cup .body{padding:14px 18px 26px;display:grid;gap:4px}
+.cup .yr{font-family:var(--display);font-weight:700;font-size:19px;color:#fff;letter-spacing:.04em}
+.cup h3{font-size:1.6rem}
+.cup p{margin:0;color:#c2c2c8;font-size:14px}
+.cup.major{box-shadow:inset 0 4px 0 var(--orange)}
+.awards{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.award{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);padding:6px 12px;font-size:14px}
+.award .ic{color:var(--orange-ink)}
+
+/* lift gallery */
+.lifts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.nb form[hidden] + .nblist{grid-column:1/-1}
+.lift{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column}
+.lift .slot{aspect-ratio:3/4}
+.lift .cap{padding:10px 14px 14px;border-top:4px solid var(--orange)}
+.lift .cap b{font-family:var(--display);font-size:1.05rem;display:block}
+.lift .cap span{font-size:13px;color:var(--muted)}
+.lifts .lift:first-child{grid-column:span 2;grid-row:span 2}
+.lifts .lift:first-child .slot{aspect-ratio:auto;flex:1;min-height:320px}
+
+/* gallery */
+.gal-tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.gal-count{font:700 16px var(--mono);color:var(--muted);margin-right:6px}
+.lb-form{display:grid;grid-template-columns:minmax(0,1fr) 110px auto auto;gap:8px;align-items:end;background:#151517;padding:10px}
+.lb-form label{font-size:13px;color:#c2c2c8;display:grid;gap:4px}
+.lb-form input{background:#1d1d21;color:#fff;border-color:#3a3a41}
+@media (max-width:640px){.lb-form{grid-template-columns:1fr 1fr}.lb-form label:first-child{grid-column:1/-1}}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.gt{position:relative;aspect-ratio:1;overflow:hidden;background:var(--ink-2);border:0;padding:0;cursor:pointer;display:block;width:100%}
+.gt img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gt:hover img{transform:scale(1.04)}
+.gt .gc{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;background:linear-gradient(0deg,rgba(15,15,16,.9),transparent);color:#fff;font-size:12.5px;text-align:left;line-height:1.35}
+.gt .gy{position:absolute;top:8px;left:8px;background:var(--orange);color:var(--ink);font:700 11px var(--display);padding:2px 7px}
+@media (prefers-reduced-motion:reduce){.gt img{transition:none}.gt:hover img{transform:none}}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%;color:#fff}
+dialog.lb::backdrop{background:rgba(8,8,10,.88)}
+.lb-in{display:grid;gap:10px}
+.lb-img{background:#000;display:grid;place-items:center;max-height:78vh;overflow:hidden}
+.lb-img img{max-width:100%;max-height:78vh;object-fit:contain}
+.lb-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lb-bar p{margin:0;flex:1;min-width:200px;font-size:15px}
+.lb-bar p small{display:block;color:#f9a66b;font-family:var(--mono);font-size:12px}
+.lb-btn{font:600 14px var(--display);background:#26262b;color:#fff;border:1px solid #3a3a41;padding:8px 14px;min-height:44px;cursor:pointer;transition:background-color .2s}
+.lb-btn:hover{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.lb-btn.danger:hover{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* image editor */
+dialog.ed{border:0;padding:0;max-width:min(1060px,96vw);width:100%;background:var(--panel);color:var(--ink);max-height:96vh;overflow:auto}
+dialog.ed::backdrop{background:rgba(8,8,10,.82)}
+.ed-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);color:#fff;padding:12px 18px}
+.ed-h h2{font-size:1.15rem}
+.ed-h span{font-size:13px;color:#c2c2c8}
+.ed-b{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:18px;padding:18px}
+.ed-stage{background:#1d1d21;display:grid;place-items:center;min-height:300px;padding:12px;min-width:0}
+.ed-stage canvas{display:block;touch-action:none;cursor:grab;max-width:100%;outline:2px solid var(--orange);outline-offset:0}
+.ed-stage canvas:active{cursor:grabbing}
+.ed-stage canvas:focus-visible{outline:3px solid #fff}
+.ed-c{display:grid;gap:16px;align-content:start}
+.ed-c fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+.ed-c legend{font:800 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ratios{display:flex;flex-wrap:wrap;gap:6px}
+.ratios .tab{min-height:36px;font-size:13.5px;padding:4px 11px}
+.rng{display:grid;grid-template-columns:88px minmax(0,1fr) 46px;align-items:center;gap:8px;font-size:14.5px}
+.rng input{min-height:28px;padding:0;border:0;background:none;accent-color:var(--orange)}
+.rng input:focus{box-shadow:none}
+.rng output{text-align:right;color:var(--muted)}
+.ed-row{display:flex;gap:8px;flex-wrap:wrap}
+.btn.btn-ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.btn.btn-ghost:hover{background:var(--paper);border-color:var(--ink)}
+.btn.btn-ghost[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ed-f{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--line)}
+.ed-hint{font-size:13.5px;color:var(--muted);margin:0}
+.ed-info{margin:0;font-size:14px;padding:8px 10px;border-left:4px solid var(--green);background:#eef7f1;color:#14532d}
+.ed-info.warn{border-left-color:var(--orange);background:var(--orange-soft);color:var(--orange-ink)}
+@media (max-width:760px){.ed-b{grid-template-columns:1fr}}
+
+/* poster hero */
+.poster{position:relative;min-height:min(74vh,640px);display:flex;align-items:flex-end;overflow:hidden;background:#0b0b0c;isolation:isolate}
+.poster > .slot{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,#5a2a0c,#0b0b0c 70%)}
+.poster > .slot img{object-position:50% 25%}
+.poster > .slot .ph{background:none;color:#a7a7ae;justify-content:flex-start;padding-top:18%}
+.poster > .slot .tools{z-index:5;top:12px;bottom:auto}
+.poster-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(11,11,12,.96) 0%,rgba(11,11,12,.55) 38%,rgba(11,11,12,.1) 70%),linear-gradient(90deg,rgba(11,11,12,.75) 0%,rgba(11,11,12,0) 60%)}
+.poster-in{position:relative;z-index:2;width:100%;padding-block:40px 34px;pointer-events:none}
+.big3{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:-.12em;font:800 clamp(18rem,46vw,38rem)/.8 var(--display);color:rgba(243,112,33,.28);-webkit-text-stroke:3px rgba(243,112,33,.85);letter-spacing:-.04em;user-select:none}
+.poster-txt{position:relative;color:#fff;max-width:900px}
+.poster-txt small{font:700 clamp(14px,1.6vw,18px) var(--mono);letter-spacing:.16em;color:#f9a66b}
+.poster h1{font:italic 800 clamp(4.2rem,13vw,10rem)/.86 var(--display);letter-spacing:.005em;margin:.08em 0 .12em;text-shadow:0 6px 30px rgba(0,0,0,.45)}
+.poster-txt p{margin:0;font-size:clamp(15px,1.8vw,19px);color:#e4e4e7}
+.scorestrip{background:var(--ink);color:#fff;border-top:4px solid var(--orange)}
+.ss-in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.ss{padding:12px 18px;border-right:1px solid #2c2c31}
+.ss:first-child{padding-left:0}.ss:last-child{border-right:0}
+.ss small{display:block;font:700 13px var(--mono);letter-spacing:.14em;color:var(--gold)}
+.ss b{font:700 clamp(1.4rem,3vw,2.1rem)/1.1 var(--display);letter-spacing:.02em;white-space:nowrap}
+.ss em{font-style:normal;color:var(--orange);padding:0 .15em}
+.herobar{padding-block:22px 28px}
+
+/* 2027 highlight */
+.era{background:radial-gradient(ellipse at 85% 0%,rgba(243,112,33,.35),transparent 55%),#0b0b0c;color:#fff;border-top:4px solid var(--orange);border-bottom:4px solid var(--orange);margin-bottom:48px}
+.era-in{padding-block:30px 34px;display:grid;gap:22px}
+.era-head small{font:700 15px var(--mono);letter-spacing:.16em;color:#f9a66b}
+.era-word{margin:.05em 0 .1em;font:italic 800 clamp(3.2rem,10vw,8rem)/.9 var(--display);letter-spacing:.01em;background:linear-gradient(90deg,#fff 0%,#ffd7b8 45%,var(--orange) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.era-src{font-size:14px;color:#a7a7ae}
+.era-src a{color:#f9a66b}
+.era-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:16px;align-items:start}
+.era .status27{background:#151517}
+.r27{background:#151517;padding:14px 18px 16px;border-left:5px solid #3a3a41}
+.r27-h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.r27-h h3{font-size:1.5rem;text-transform:uppercase}
+.r27-h .lg{display:flex;gap:6px;flex-wrap:wrap}
+.r27g{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.p7{background:#202024;padding:8px 10px;border-top:3px solid #3a3a41;display:grid;gap:2px;align-content:start}
+.p7 small{font:700 12.5px var(--mono);letter-spacing:.1em;color:#a7a7ae}
+.p7{min-width:0}
+.p7 b{font:700 clamp(1.15rem,1.7vw,1.45rem)/1.1 var(--display);overflow-wrap:anywhere}
+@media (max-width:1280px){.r27g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.p7.me{background:var(--orange);color:var(--ink);border-top-color:#fff}
+.p7.me small{color:#5a2203}
+.p7.coach{border-top-color:var(--gold)}
+.tg{font:700 12px var(--display);letter-spacing:.06em;font-style:normal;padding:1px 7px;justify-self:start;white-space:nowrap}
+.tg.o{background:#15803d;color:#fff}
+.tg.c{background:#fff;color:var(--ink)}
+.tg.r{border:1px solid #f9a66b;color:#f9a66b}
+.p7.me .tg.c{background:var(--ink);color:#fff}
+.r27-n{margin:10px 0 0;font-size:14px;color:#c2c2c8}
+.r27 .src{color:#a7a7ae}.r27 .src a{color:#f9a66b}
+@media (max-width:1000px){.era-grid{grid-template-columns:1fr}.r27g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.r27g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.cnw{display:inline-flex;align-items:center;gap:10px}
+/* youtube button + debut */
+.yt-btn{pointer-events:auto;display:inline-flex;align-items:center;gap:12px;margin-top:16px;padding:8px 18px 8px 8px;background:rgba(15,15,16,.72);border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background-color .2s,border-color .2s}
+.yt-btn:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.yt-play{width:48px;height:48px;display:grid;place-items:center;background:#e11d48;color:#fff;border-radius:50%}
+.yt-play .ic{width:22px;height:22px;fill:currentColor;margin-left:3px}
+.yt-btn small{display:block;font:700 12px var(--mono);letter-spacing:.14em;opacity:.8}
+.yt-btn b{font:700 1.35rem/1.1 var(--display)}
+.poster > .slot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.debut{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);background:var(--panel);border:1px solid var(--line);margin-bottom:22px}
+.db-l{background:linear-gradient(160deg,#17090b,#0f0f10);color:#fff;padding:18px 20px;display:grid;gap:6px;align-content:start;border-left:6px solid #e4002b}
+.db-l small{font:700 14px var(--mono);letter-spacing:.14em;color:#ff6b7f}
+.db-date{font:800 2.7rem/1 var(--display)}
+.db-l > span{color:#c2c2c8;font-size:15px}
+.db-k{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.db-k span{font:700 16px var(--display);background:#26262b;padding:2px 10px}
+.db-k .kda{background:var(--gold);color:var(--ink)}
+.db-r{padding:14px 18px;display:grid;gap:10px;min-width:0}
+.db-h{font:700 clamp(1.5rem,3vw,2rem)/1 var(--display);text-transform:uppercase}
+.db-h em{font-style:normal;color:var(--orange-ink);padding:0 .2em}
+.db-lu{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.db-lu li{font:700 15px var(--display);background:var(--paper);padding:2px 10px}
+.db-lu li.me{background:#e4002b;color:#fff}
+.db-r .games{padding:0}
+.db-f{margin:0;padding-left:1.1rem;display:grid;gap:4px;font-size:15px}
+.db-r .src{margin:0}
+@media (max-width:760px){.debut{grid-template-columns:1fr}}
+/* champion chip */
+.ch{display:inline-grid;place-items:center;width:40px;height:40px;flex:none;overflow:hidden;background:#2c2c31;color:#fff;border:2px solid #3a3a41}
+.ch img{width:100%;height:100%;object-fit:cover}
+.ch .mono{font:700 15px var(--display);letter-spacing:.02em}
+.ch.sm{width:30px;height:30px}.ch.sm .mono{font-size:12px}
+.ch.lg{width:96px;height:96px}.ch.lg .mono{font-size:30px}
+
+/* events (match history) */
+.events{display:grid;gap:14px}
+.event{background:var(--panel);border:1px solid var(--line)}
+.ev-h{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;padding:12px 18px;border-bottom:1px solid var(--line)}
+.ev-t{display:flex;flex-direction:column;min-width:0;flex:1}
+.ev-d{font:600 15px var(--mono);color:var(--muted)}
+.ev-t h3{font-size:1.7rem;text-transform:uppercase}
+.ev-sum{display:flex;gap:6px;flex-wrap:wrap}
+.ev-sum span{font:700 15px var(--display);background:var(--paper);padding:2px 10px}
+.ev-sum .kda{background:var(--ink);color:var(--gold)}
+.ev-note{margin:0;padding:10px 18px;color:var(--muted);font-size:15px;border-bottom:1px solid var(--line)}
+.event.slim .ev-note{border-bottom:0}
+.srow{display:grid;grid-template-columns:300px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.srow:last-child{border-bottom:0}
+.s-info{display:grid;grid-template-columns:52px minmax(0,1fr) 58px;align-items:center;gap:10px;padding:10px 14px 10px 18px;background:#faf9f6}
+.s-info .sd{font:600 15px var(--mono);color:var(--muted)}
+.s-who small{display:block;font:600 14px var(--display);letter-spacing:.03em;color:var(--muted)}
+.s-who b{font:700 1.2rem/1.15 var(--display)}
+.s-info .sc{font:700 20px var(--display);text-align:center;padding:2px 0}
+.games{list-style:none;margin:0;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gm{display:flex;align-items:center;gap:8px;padding:4px 10px 4px 4px;border:1px solid var(--line);border-left:4px solid var(--green);background:var(--panel);min-width:0}
+.gm.gl{border-left-color:var(--red)}
+.gm-t{display:grid;line-height:1.2}
+.gm-t small{font-size:11.5px;color:var(--muted)}
+.gm-t b{font:700 16px var(--display)}
+.gm-t span{font-size:13px}
+
+/* pentakill */
+.pentas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.pk{position:relative;min-height:340px;background:#111;color:#fff;overflow:hidden;display:flex;align-items:flex-end;isolation:isolate}
+.pk::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(10,10,11,.97) 30%,rgba(10,10,11,.25) 75%,rgba(10,10,11,.5))}
+.pk.t1{border-top:5px solid #e4002b}.pk.hle{border-top:5px solid var(--orange)}
+.pk-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%;z-index:-2}
+.pk-n{position:absolute;top:8px;right:12px;font:800 3.4rem/1 var(--display);color:rgba(255,255,255,.22)}
+.pk-b{padding:16px 16px 18px;display:grid;gap:6px}
+.pk-b small{font:600 14px var(--mono);letter-spacing:.06em;color:#f9a66b}
+.pk-word{font:italic 800 2.3rem/1 var(--display);letter-spacing:.02em}
+.pk-line{display:flex;align-items:center;gap:8px;font:700 18px var(--display)}
+.pk-vs{font:700 1.25rem/1.1 var(--display);text-transform:uppercase}
+.pk-st{display:flex;gap:6px;flex-wrap:wrap}
+.pk-st .k{font:700 18px var(--display);background:#fff;color:var(--ink);padding:1px 10px}
+.pk-st .r{font:700 15px var(--display);background:#15803d;color:#fff;padding:2px 10px}
+.pk-b p{margin:0;color:#c2c2c8;font-size:14px}
+
+/* skins */
+.skins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.skin{margin:0;background:var(--ink);color:#fff}
+.skin-img{aspect-ratio:308/560;max-height:360px;width:100%;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#3a1010,#111 75%)}
+.skin-img img{width:100%;height:100%;object-fit:cover;object-position:50% 10%}
+.skin figcaption{padding:10px 14px 14px;border-top:4px solid #e4002b}
+.skin figcaption b{display:block;font:700 1.3rem var(--display)}
+.skin figcaption span{font-size:13.5px;color:#c2c2c8}
+
+/* career timeline */
+.tl-wrap{overflow-x:auto;padding-bottom:4px}
+.tline{list-style:none;margin:0;padding:0 0 0;display:grid;grid-template-columns:repeat(9,minmax(76px,1fr));position:relative;min-width:680px}
+.tline::before{content:"";position:absolute;left:0;right:0;top:21px;height:6px;background:linear-gradient(90deg,#8a8a90 0 11.1%,#e4002b 11.1% 88.9%,var(--orange) 88.9%)}
+.tn-b{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;background:none;border:0;padding:0 0 8px;cursor:pointer;color:var(--ink);font:inherit}
+.tn-dot{width:20px;height:20px;border-radius:50%;background:var(--panel);border:4px solid #8a8a90;margin:14px 0 6px;transition:transform .2s}
+.tn.t1 .tn-dot{border-color:#e4002b}.tn.hle .tn-dot{border-color:var(--orange)}
+.tn-b b{font:700 1.45rem/1 var(--display)}
+.tn-b small{font:600 13px var(--mono);letter-spacing:.1em;color:var(--muted)}
+.tn-b[aria-selected="true"] .tn-dot{transform:scale(1.45);background:var(--ink)}
+.tn.t1 .tn-b[aria-selected="true"] .tn-dot{background:#e4002b;border-color:#111}
+.tn.hle .tn-b[aria-selected="true"] .tn-dot{background:var(--orange);border-color:#111}
+.tn-b[aria-selected="true"] b{color:var(--orange-ink)}
+.tn-b:hover .tn-dot{transform:scale(1.25)}
+.yearcard{margin-top:10px;color:#fff;background:#141416;border-left:8px solid #8a8a90}
+.yearcard.t1{background:linear-gradient(110deg,#17090b 0%,#0f0f10 60%);border-left-color:#e4002b}
+.yearcard.hle{background:linear-gradient(110deg,#2a1406 0%,#0f0f10 60%);border-left-color:var(--orange)}
+.yc-h{display:flex;align-items:center;gap:18px;padding:14px 20px;border-bottom:1px solid #2c2c31}
+.yc-y{font:800 3.4rem/1 var(--display)}
+.yearcard.t1 .yc-y{color:#ff3b55}.yearcard.hle .yc-y{color:var(--orange)}
+.yc-t b{display:block;font:700 1.6rem/1.1 var(--display);text-transform:uppercase}
+.yc-t span{color:#c2c2c8;font-size:15px}
+.yc-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:20px;padding:14px 20px 18px}
+.yc-b small{display:block;font:700 13px var(--mono);letter-spacing:.14em;color:#a7a7ae;margin-bottom:6px}
+.yc-r ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.yc-r li{font:700 17px var(--display);background:#26262b;padding:4px 12px}
+.yc-r li.me{background:#fff;color:var(--ink)}
+.yearcard.t1 .yc-r li.me{background:#e4002b;color:#fff}.yearcard.hle .yc-r li.me{background:var(--orange);color:var(--ink)}
+.yc-a ul{margin:0;padding-left:1.1rem;display:grid;gap:3px;font-size:15.5px}
+.yc-b > :only-child{grid-column:1/-1}
+
+/* fun facts */
+.facts2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ff{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--ink);padding:12px 16px}
+.ff small{display:block;font:700 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ff b{display:block;font:700 1.75rem/1.15 var(--display)}
+.ff span{font-size:14px;color:var(--muted)}
+.ff:nth-child(3n+2){border-top-color:var(--orange)}
+
+@media (max-width:1000px){
+  .herobar{grid-template-columns:1fr}
+  .pentas,.skins{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .srow{grid-template-columns:1fr}
+  .facts2{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .poster{min-height:78vh}
+  .ss-in{grid-template-columns:1fr}.ss{padding:8px 0;border-right:0;border-bottom:1px solid #2c2c31}.ss:last-child{border-bottom:0}
+  .gm{flex:1 1 100%}
+  .pentas,.skins,.facts2{grid-template-columns:1fr}
+  .skin-img{max-height:300px}
+  .yc-b{grid-template-columns:1fr}
+  .yc-y{font-size:2.6rem}
+}
+
+/* quote, series, roster */
+.quote{margin:0 0 18px;background:var(--ink);color:#fff;padding:20px 24px 18px;border-left:6px solid var(--orange)}
+.quote blockquote{margin:0;font:italic 700 clamp(1.6rem,3.4vw,2.3rem)/1.15 var(--display)}
+.quote figcaption{margin-top:8px;font-size:14px;color:#c2c2c8}
+.quote figcaption a{color:#f9a66b}
+.series{grid-column:1/-1;list-style:none;margin:4px 0 0;padding:0;display:grid;gap:4px}
+.series li{display:grid;grid-template-columns:64px 190px minmax(0,1fr) 60px;gap:12px;align-items:center;background:var(--paper);padding:6px 12px;font-size:14.5px}
+.series .sd{color:var(--muted)}
+.series .sr{font:600 15px var(--display);letter-spacing:.02em;color:var(--muted)}
+.series .so{font-weight:700}
+.series .sc{font:700 18px var(--display);text-align:center;padding:1px 0}
+.sc.w{background:var(--ink);color:var(--gold)}
+.sc.l{background:#fde2e3;color:var(--red)}
+.sub-h{font-size:1.5rem;text-transform:uppercase;margin:26px 0 10px}
+.roster{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.pl{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--ink);padding:10px 12px}
+.pl small{display:block;font:700 13px var(--mono);letter-spacing:.12em;color:var(--muted)}
+.pl b{display:block;font:700 1.55rem/1.1 var(--display)}
+.pl span{font-size:13px;color:var(--muted)}
+.pl.me{background:var(--ink);color:#fff;border-color:var(--ink);border-top-color:var(--orange)}
+.pl.me small{color:#f9a66b}.pl.me span{color:#c2c2c8}
+.pl.coach{border-top-color:var(--gold)}
+
+/* season schedule */
+.sched{background:var(--panel);border:1px solid var(--line)}
+.match{display:grid;grid-template-columns:120px 190px 120px minmax(0,1fr);align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.match:last-child{border-bottom:0}
+.match .d{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--muted)}
+.match h3{font-size:1.45rem}
+.res{justify-self:start;font:700 15px var(--display);letter-spacing:.06em;padding:3px 10px;--cut:8px;white-space:nowrap}
+.res.win{background:var(--ink);color:var(--gold)}
+.res.mid{background:var(--orange-soft);color:var(--orange-ink)}
+.res.out{background:#fde2e3;color:var(--red)}
+.res.new{background:var(--orange);color:var(--ink)}
+.match p{margin:0;color:var(--muted);font-size:14.5px}
+
+/* stats */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--ink);color:#fff;padding:12px 18px 20px;--cut:16px}
+.kpi small{font:700 14px var(--mono);letter-spacing:.12em;color:#f9a66b}
+.kpi b{display:block;font:700 3rem/1.05 var(--display)}
+.kpi span{font-size:13.5px;color:#c2c2c8}
+.minis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--panel);border:1px solid var(--line);margin:12px 0 16px}
+.minis div{padding:10px 16px;border-right:1px solid var(--line)}
+.minis div:last-child{border-right:0}
+.minis small{display:block;font-size:13px;color:var(--muted)}
+.minis b{font:700 1.6rem var(--display)}
+.kpi .m{height:6px;background:#2c2c31;margin-top:8px}
+.kpi .m i{display:block;height:100%;background:var(--orange)}
+.board{background:var(--panel);border:1px solid var(--line);min-width:0}
+.board .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);color:#fff;padding:10px 16px}
+.board .hd h3{font-size:1.05rem}
+.board .hd span{font-size:12.5px;color:#c2c2c8}
+.tablebox{overflow-x:auto}
+.champs{width:100%;border-collapse:collapse;font-size:15px}
+.champs th{text-align:left;font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 14px;border-bottom:1px solid var(--line)}
+.champs .gcell{display:flex;align-items:center;gap:10px}
+.champs .gcell .bar{flex:1}
+.champs .gcell b{font:700 17px var(--display);min-width:2ch;text-align:right}
+.champs td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.champs tr:last-child td{border-bottom:0}
+.champs .n{text-align:right;white-space:nowrap;font-family:var(--display);font-weight:600;font-variant-numeric:tabular-nums}
+.champs .cn{font-family:var(--display);font-weight:700;font-size:19px}
+.champs .n{font-size:17px}
+.champs .rk{font-family:var(--mono);color:var(--muted);width:2.5rem}
+.bar{height:12px;background:#ecebe7;min-width:100px}
+.bar i{display:block;height:100%;background:var(--orange)}
+.hi{color:var(--green)}
+
+/* career */
+.road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.team{background:var(--panel);border:1px solid var(--line);padding:16px 18px;position:relative}
+.team small{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.team h3{font-size:1.6rem;font-style:italic;margin:4px 0}
+.team p{margin:0;font-size:14.5px;color:var(--muted)}
+.team.now{background:var(--ink);color:#fff;border-color:var(--ink)}
+.team.now small{color:#f9a66b}.team.now p{color:#c2c2c8}
+
+/* links */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{font:600 14px var(--display);cursor:pointer;background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:6px 14px;min-height:40px;transition:background-color .2s,color .2s}
+.tab:hover{border-color:var(--ink)}
+.tab[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lk{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);padding:12px 14px;text-decoration:none;color:var(--ink);transition:border-color .2s,background-color .2s;cursor:pointer}
+.lk:hover{border-color:var(--orange);background:#fff8f3}
+.lk .ib{width:40px;height:40px;display:grid;place-items:center;flex:none;background:var(--ink);color:#fff}
+.lk .ib.yt{background:var(--live)}
+.lk div{min-width:0;flex:1}
+.lk span{display:block;font-size:12.5px;color:var(--muted)}
+.lk b{display:block;font-weight:600;line-height:1.35}
+.lk .go{color:var(--muted)}
+
+/* trivia */
+.trivia{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tv{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--ink);padding:12px 16px;font-size:15px}
+
+/* notebook */
+.nb{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px;align-items:start}
+.nbform{background:var(--ink);color:#fff;padding:18px 20px 28px;display:grid;gap:12px;--cut:22px}
+.nbform h3{font-size:1.2rem}
+.nbform label{font-size:13px;color:#c2c2c8;display:grid;gap:4px}
+input,select,textarea{font:inherit;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);padding:9px 10px;width:100%;min-height:44px;border-radius:0}
+.nbform input,.nbform select,.nbform textarea{background:#1d1d21;color:#fff;border-color:#3a3a41}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(243,112,33,.3)}
+textarea{resize:vertical;min-height:84px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:var(--ink);border:0;font:700 15px var(--display);padding:10px 16px;min-height:44px;cursor:pointer;transition:background-color .2s}
+.btn:hover{background:#ff8a3d}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.nblist{background:var(--panel);border:1px solid var(--line);padding:16px 18px;min-width:0}
+.nblist .hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.nblist .hd h3{font-size:1.2rem}
+.status{font-size:13px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.filters .tab{font-size:13px;min-height:36px;padding:4px 10px}
+.entries{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.entry{border:1px solid var(--line);border-left:4px solid var(--orange);padding:10px 12px}
+.entry .top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.entry .k{font-family:var(--mono);font-size:11px;color:var(--orange-ink);text-transform:uppercase;letter-spacing:.08em}
+.entry b{display:block;font-weight:600;margin-top:2px;word-break:break-word}
+.entry p{margin:4px 0 0;font-size:14px;color:var(--muted);white-space:pre-wrap;word-break:break-word}
+.entry a{font-size:13.5px;word-break:break-all}
+.del{display:inline-grid;place-items:center;width:36px;height:36px;background:none;border:1px solid transparent;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.del:hover{color:var(--red);border-color:var(--red)}
+.sure{font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.sure button{font:600 13px var(--display);cursor:pointer;padding:5px 12px;min-height:34px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.sure .yes{background:var(--red);border-color:var(--red);color:#fff}
+.empty{font-size:14px;color:var(--muted);border:1px dashed var(--line);padding:14px}
+.note-photos{font-size:13.5px;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--orange);padding:10px 14px;margin-bottom:16px}
+footer{background:var(--ink);color:#a7a7ae;font-size:13px}
+footer .wrap{padding-block:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .pcard{max-width:420px}
+  .cups,.lgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lifts{grid-template-columns:repeat(2,minmax(0,1fr))}.lifts .lift:first-child{grid-row:span 1}
+  .nb{grid-template-columns:1fr}
+  .kpis,.minis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .minis div:nth-child(2){border-right:0}.minis div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .roster{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .match{grid-template-columns:110px minmax(0,1fr) auto}
+  .match p{grid-column:1/-1}
+  .series li{grid-template-columns:54px minmax(0,1fr) 56px}.series .sr{grid-column:2}.series .so{grid-column:2;grid-row:2}.series .sc{grid-row:1/span 2;grid-column:3}.series .sd{grid-row:1/span 2}
+}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts{grid-template-columns:1fr}.facts div{border-right:0;border-bottom:1px solid var(--line)}.facts div:last-child{border-bottom:0}
+  .cups,.lgrid,.road,.trivia{grid-template-columns:1fr}
+  .roster{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand{padding-right:34px;font-size:21px}
+  .nbbtn{padding:0 12px}
+  .lifts{grid-template-columns:1fr}.lifts .lift:first-child{grid-column:auto}.lifts .lift:first-child .slot{aspect-ratio:3/4;min-height:0}
+  .match{grid-template-columns:1fr auto}.match .d{grid-column:1/-1}
+  main{gap:44px}
+}
+
+/* bản tĩnh */
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+#notebook,.nbbtn,.slot .tools{display:none!important}
+.topbar .in{justify-content:space-between}
+.yt-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.yt-bg iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:0}
+dialog.ytd{border:0;padding:0;background:transparent;width:min(1100px,94vw);max-width:none}
+dialog.ytd::backdrop{background:rgba(8,8,10,.9)}
+.yt-frame{position:relative;aspect-ratio:16/9;background:#000}
+.yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-close{display:block;margin:10px 0 0 auto;font:700 16px var(--display);background:#26262b;color:#fff;border:1px solid #3a3a41;padding:8px 16px;min-height:44px;cursor:pointer}
+.yt-close:hover{background:var(--orange);color:var(--ink)}
+</style>
+</head><body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cup" viewBox="0 0 64 80"><path d="M14 6h36v14c0 12-8 22-18 22S14 32 14 20z"/><path d="M14 10H6c0 10 4 16 10 17M50 10h8c0 10-4 16-10 17" fill="none" stroke="currentColor" stroke-width="3"/><rect x="28" y="42" width="8" height="14"/><path d="M18 62h28l4 12H14z"/></symbol>
+  <symbol id="person" viewBox="0 0 80 80"><g fill="currentColor"><circle cx="40" cy="26" r="11"/><path d="M19 78c0-16 9-28 21-28s21 12 21 28z"/><path d="M12 4h20v8c0 6-4 10-10 10s-10-4-10-10z"/></g><path d="M29 50 20 24" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="7 4 20 12 7 20 7 4"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe7a3"/><stop offset=".45" stop-color="#e0b03a"/><stop offset="1" stop-color="#9a6b12"/></linearGradient>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-crop" viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="#top">GUMAYUSI</a>
+    <nav class="menu" id="menu" aria-label="Điều hướng">
+      <a href="#y2027">2027</a><a href="#season">Mùa 2026</a><a href="#titles">Danh hiệu</a><a href="#career">Hành trình</a><a href="#stats">Chỉ số</a><a href="#penta">Pentakill</a><a href="#lifts">Nâng cúp</a><a href="#gallery">Thư viện ảnh</a><a href="#media">Video</a><a href="#trivia">Fun fact</a>
+    </nav>
+    <a class="nbbtn" href="#notebook"><svg class="ic"><use href="#i-book"/></svg>SỔ TAY</a>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+<div class="ticker" aria-label="Tin mới">
+  <div class="track">
+    <span><b>2027</b>Gumayusi ở lại HLE, hợp đồng đến 15/11/2027 · Mowgli lên HLV trưởng</span>
+    <span><b>OFFICIAL</b>HLE công bố Canyon gia nhập ở vị trí đi rừng (24/11/2026)</span>
+    <span><b>WORLDS</b>HLE dừng ở Swiss Stage với thành tích 2–3, BLG vô địch Worlds 2026</span>
+    <span><b>LCK</b>HLE á quân LCK 2026 sau trận chung kết thua Gen.G 1–3</span>
+    <span><b>HCV</b>Asian Games 2026: Gumayusi giành HCV cùng đội tuyển Hàn Quốc</span>
+    <span><b>VÔ ĐỊCH</b>MSI 2026: HLE thắng BLG 3–2 tại Daejeon</span>
+    <span aria-hidden="true"><b>2027</b>Gumayusi ở lại HLE, hợp đồng đến 15/11/2027 · Mowgli lên HLV trưởng</span>
+    <span aria-hidden="true"><b>OFFICIAL</b>HLE công bố Canyon gia nhập ở vị trí đi rừng (24/11/2026)</span>
+    <span aria-hidden="true"><b>WORLDS</b>HLE dừng ở Swiss Stage với thành tích 2–3, BLG vô địch Worlds 2026</span>
+    <span aria-hidden="true"><b>LCK</b>HLE á quân LCK 2026 sau trận chung kết thua Gen.G 1–3</span>
+    <span aria-hidden="true"><b>HCV</b>Asian Games 2026: Gumayusi giành HCV cùng đội tuyển Hàn Quốc</span>
+    <span aria-hidden="true"><b>VÔ ĐỊCH</b>MSI 2026: HLE thắng BLG 3–2 tại Daejeon</span>
+  </div>
+</div>
+
+<section class="poster" id="top">
+  <div class="slot" data-slot="hero" data-label="Ảnh bìa: Gumayusi nâng cúp" data-icon="person"></div>
+  <div class="poster-shade" aria-hidden="true"></div>
+  <div class="wrap poster-in">
+    <span class="big3" aria-hidden="true">3</span>
+    <div class="poster-txt">
+      <small>LEE MIN-HYEONG · 이민형 · ADC · HANWHA LIFE ESPORTS</small>
+      <h1>GUMAYUSI</h1>
+      <p>Ba lần vô địch thế giới liên tiếp · Finals MVP 2025 · Vô địch MSI 2026</p>
+      <a class="yt-btn" href="https://youtu.be/BnokuoGxgSc" target="_blank" rel="noopener"><span class="yt-play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span><span><small>VIDEO · HANWHA LIFE ESPORTS</small><b>HLE OFFICIAL #5</b></span></a>
+    </div>
+  </div>
+</section>
+<div class="scorestrip" role="list" aria-label="Ba trận chung kết Worlds">
+  <div class="wrap ss-in">
+    <div class="ss" role="listitem"><small>WORLDS 2023</small><b>T1 <em>3–0</em> WBG</b></div>
+    <div class="ss" role="listitem"><small>WORLDS 2024</small><b>T1 <em>3–2</em> BLG</b></div>
+    <div class="ss" role="listitem"><small>WORLDS 2025 · FMVP</small><b>T1 <em>3–2</em> KT</b></div>
+  </div>
+</div>
+
+<section class="wrap herobar">
+  <div class="stats">
+    <div class="st"><small>WORLDS</small><b class="num">3</b><span>2023 · 2024 · 2025</span></div>
+    <div class="st"><small>MSI</small><b class="num">1</b><span>2026 · HLE</span></div>
+    <div class="st"><small>BOT OF THE YEAR</small><b class="num">3</b><span>LCK 2023–2025</span></div>
+    <div class="st"><small>TỈ LỆ THẮNG</small><b class="num">64,3%</b><span>859 ván</span></div>
+  </div>
+</section>
+
+<section class="era" id="y2027" aria-labelledby="eraWord">
+  <div class="wrap era-in">
+    <div class="era-head">
+      <small>MÙA GIẢI 2027 · HANWHA LIFE ESPORTS</small>
+      <p class="era-word" id="eraWord">GUMAYUSI'S ERA.</p>
+      <span class="era-src">Khẩu hiệu lan truyền từ Worlds 2026 · <a href="https://x.com/lolesports/status/2113618944783212772" target="_blank" rel="noopener">LoL Esports, 23/10/2026</a></span>
+    </div>
+    <div class="era-grid">
+  <div class="status27" id="status27">
+    <div class="s-h"><span class="s-k">TÌNH TRẠNG 2027</span><button class="s-edit" type="button" id="stEditBtn" hidden>Cập nhật</button></div>
+    <div id="stView"><p class="s-empty">Chưa có thông tin.</p></div>
+    <form id="stForm" class="s-form" hidden>
+      <div class="row2">
+        <label for="stState">Trạng thái
+          <select id="stState">
+            <option value="">Chưa công bố</option>
+            <option value="stay">Ở lại HLE</option>
+            <option value="renew">Gia hạn hợp đồng</option>
+            <option value="move">Chuyển đội</option>
+            <option value="fa">Tự do (FA)</option>
+            <option value="break">Tạm nghỉ</option>
+          </select>
+        </label>
+        <label for="stTeam">Đội 2027<input id="stTeam" maxlength="60" placeholder="Hanwha Life Esports"></label>
+      </div>
+      <label for="stNote">Ghi chú<textarea id="stNote" maxlength="400" placeholder="Hợp đồng đến hết 2027, công bố ngày…"></textarea></label>
+      <label for="stUrl">Link nguồn<input id="stUrl" type="url" placeholder="https://"></label>
+      <div class="ed-row"><button class="btn" type="submit" id="stSave">Lưu</button><button class="btn btn-ghost" type="button" id="stCancel">Huỷ</button></div>
+    </form>
+  </div>
+      <div class="r27">
+        <div class="r27-h"><h3>Đội hình HLE 2027</h3><span class="lg"><i class="tg o">Official</i><i class="tg c">Có hợp đồng</i><i class="tg r">Tin đồn</i></span></div>
+        <div class="r27g">
+          <div class="p7"><small>TOP</small><b>Kiin</b><i class="tg r">Tin đồn</i></div>
+          <div class="p7"><small>JUNGLE</small><b>Canyon</b><i class="tg o">Official</i></div>
+          <div class="p7"><small>MID</small><b>Zeka</b><i class="tg c">Có hợp đồng</i></div>
+          <div class="p7 me"><small>BOT</small><b>Gumayusi</b><i class="tg c">Đến 15/11/2027</i></div>
+          <div class="p7"><small>SUPPORT</small><b>Career</b><i class="tg r">Tin đồn</i></div>
+          <div class="p7 coach"><small>HLV TRƯỞNG</small><b>Mowgli</b><i class="tg o">Official</i></div>
+        </div>
+        <p class="r27-n">Canyon được HLE công bố ngày 24/11/2026 qua kênh YouTube chính thức. HLV: Life, S0NSTAR (Official). Zeus từ chối gia hạn, hợp đồng của Kanavi đã hết. Homme rời ghế HLV trưởng.</p>
+        <p class="src">Nguồn: <a href="https://www.sheepesports.com/en/articles/life-and-s0nstar-join-hanwha-life-esports-coaching-staff-for-2027/en" target="_blank" rel="noopener">Sheep Esports (ban huấn luyện)</a> · <a href="https://www.invenglobal.com/articles/29047/the-polar-bear-embraces-orange-canyon-joins-hanwha-life-esports" target="_blank" rel="noopener">Inven Global (Canyon)</a> · <a href="https://www.sheepesports.com/en/articles/sources-kiin-set-to-join-hanwha-life-esports-for-the-2027-lck-season/en" target="_blank" rel="noopener">Sheep Esports (Kiin)</a> · <a href="https://lol.fandom.com/wiki/Archive:Global_Contract_Database/KR/Current" target="_blank" rel="noopener">Riot Global Contract Database</a> · <a href="https://dpm.lol/esports/offseason/2027/lck/576-hanwha-life-esports" target="_blank" rel="noopener">DPM.LOL</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="season">
+    <div class="sec-h"><div class="lower"><span class="k">01</span><h2>Mùa giải 2026</h2></div></div>
+    <figure class="quote">
+      <blockquote>“Tôi nghĩ chính chiếc cúp MSI đã là thông điệp.”</blockquote>
+      <figcaption>Gumayusi sau chức vô địch MSI 2026 · <a href="https://www.invenglobal.com/articles/23809/gumayusi-i-plan-to-give-my-best-until-2030" target="_blank" rel="noopener">Inven Global</a></figcaption>
+    </figure>
+    <div class="events" id="events"></div>
+    <h3 class="sub-h">Đội hình HLE 2026</h3>
+    <div class="roster">
+      <div class="pl"><small>TOP</small><b>Zeus</b><span>Choi Woo-je</span></div>
+      <div class="pl"><small>JUNGLE</small><b>Kanavi</b><span>Seo Jin-hyeok</span></div>
+      <div class="pl"><small>MID</small><b>Zeka</b><span>Kim Geon-woo</span></div>
+      <div class="pl me"><small>BOT</small><b>Gumayusi</b><span>Lee Min-hyeong</span></div>
+      <div class="pl"><small>SUPPORT</small><b>Delight</b><span>Yoo Hwan-joong</span></div>
+      <div class="pl coach"><small>HLV TRƯỞNG</small><b>Homme</b><span>Trợ lý: Mowgli</span></div>
+    </div>
+    <p class="src">Nguồn: <a href="https://gol.gg/players/player-matchlist/3247/season-S16/split-ALL/tournament-ALL/" target="_blank" rel="noopener">gol.gg</a> · <a href="https://en.wikipedia.org/wiki/2026_League_of_Legends_World_Championship" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://www.invenglobal.com/articles/23908/disappointing-quarterfinal-exit-gumayusi-a-good-wake-up-call-for-worlds" target="_blank" rel="noopener">Inven Global</a></p>
+  </section>
+
+  <section id="titles">
+    <div class="sec-h"><div class="lower"><span class="k">02</span><h2>Tủ danh hiệu</h2></div></div>
+    <div class="cups">
+      <article class="cup major cut" id="cup-w2025"><div class="slot" data-slot="cup-w2025" data-label="Summoner's Cup 2025" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-w">WORLDS</span><span class="yr">2025</span><span class="fmvp">FINALS MVP</span></div><h3>Vô địch Thế giới 2025</h3><p>T1 3–2 KT. Danh hiệu thế giới thứ ba liên tiếp.</p></div></article>
+      <article class="cup major cut" id="cup-w2024"><div class="slot" data-slot="cup-w2024" data-label="Summoner's Cup 2024" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-w">WORLDS</span><span class="yr">2024</span></div><h3>Vô địch Thế giới 2024</h3><p>T1 3–2 BLG tại London.</p></div></article>
+      <article class="cup major cut" id="cup-w2023"><div class="slot" data-slot="cup-w2023" data-label="Summoner's Cup 2023" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-w">WORLDS</span><span class="yr">2023</span></div><h3>Vô địch Thế giới 2023</h3><p>T1 3–0 Weibo Gaming tại Seoul.</p></div></article>
+      <article class="cup major cut" id="cup-msi"><div class="slot" data-slot="cup-msi" data-label="Cúp MSI 2026" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-m">MSI</span><span class="yr">2026</span></div><h3>MSI 2026</h3><p>HLE 3–2 BLG tại Daejeon.</p></div></article>
+      <article class="cup cut" id="cup-asiad"><div class="slot" data-slot="cup-asiad" data-label="HCV Asian Games 2026" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-h">HCV</span><span class="yr">2026</span></div><h3>Asian Games 2026</h3><p>Đội tuyển Hàn Quốc, Aichi-Nagoya.</p></div></article>
+      <article class="cup cut" id="cup-iesf"><div class="slot" data-slot="cup-iesf" data-label="HCV IeSF 2018" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-h">HCV</span><span class="yr">2018</span></div><h3>IeSF World Championship 2018</h3><p>Đội tuyển Hàn Quốc, Cao Hùng.</p></div></article>
+      <article class="cup cut" id="cup-ewc"><div class="slot" data-slot="cup-ewc" data-label="Cúp EWC 2024" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-e">EWC</span><span class="yr">2024</span></div><h3>Esports World Cup 2024</h3><p>Cùng T1.</p></div></article>
+      <article class="cup cut" id="cup-lck"><div class="slot" data-slot="cup-lck" data-label="Cúp LCK Mùa Xuân 2022" data-icon="cup"></div><div class="body"><div class="tier"><span class="bt t-l">LCK</span><span class="yr">2022</span></div><h3>LCK Mùa Xuân 2022</h3><p>Mùa giải hoàn hảo 18–0.</p></div></article>
+    </div>
+    <div class="awards">
+      <span class="award"><svg class="ic"><use href="#i-star"/></svg>Finals MVP Worlds 2025</span>
+      <span class="award"><svg class="ic"><use href="#i-star"/></svg>LCK Bot of the Year 2023 · 2024 · 2025</span>
+      <span class="award"><svg class="ic"><use href="#i-star"/></svg>All-Pro 1st Team: Xuân 2022, Xuân 2023</span>
+      <span class="award"><svg class="ic"><use href="#i-star"/></svg>All-Pro 3rd Team: Xuân 2024, 2025, 2026</span>
+      <span class="award"><svg class="ic"><use href="#i-star"/></svg>LCK Gold King 2022, 2023</span>
+    </div>
+    <h3 class="sub-h">Skin vô địch của Guma</h3>
+    <div class="skins" id="skins"></div>
+  </section>
+
+  <section id="career">
+    <div class="sec-h"><div class="lower"><span class="k">03</span><h2>Hành trình</h2></div></div>
+    <article class="debut" id="debut"></article>
+    <div class="tl-wrap">
+      <ol class="tline" id="tline" role="tablist" aria-label="Chọn năm"></ol>
+    </div>
+    <div class="yearcard" id="yearcard" role="tabpanel" aria-live="polite"></div>
+  </section>
+
+  <section id="stats">
+    <div class="sec-h"><div class="lower"><span class="k">04</span><h2>Chỉ số sự nghiệp</h2></div></div>
+    <div class="kpis">
+      <div class="kpi cut"><small>SỐ VÁN</small><b>859</b><span>552 thắng · 307 thua</span></div>
+      <div class="kpi cut"><small>TỈ LỆ THẮNG</small><b>64,3%</b><div class="m"><i style="width:64.3%"></i></div></div>
+      <div class="kpi cut"><small>KDA</small><b>4,5</b><span>Trung bình mọi ván</span></div>
+      <div class="kpi cut"><small>SÁT THƯƠNG / PHÚT</small><b>657,3</b><span>26,7% sát thương của đội</span></div>
+    </div>
+    <div class="minis">
+      <div><small>Tham gia hạ gục</small><b>66,8%</b></div>
+      <div><small>Lính / phút</small><b>9,7</b></div>
+      <div><small>Vàng / phút</small><b>464</b></div>
+      <div><small>Tầm nhìn / phút</small><b>1,41</b></div>
+    </div>
+    <div class="board">
+      <div class="hd"><h3>10 TƯỚNG CHƠI NHIỀU NHẤT</h3><span>Xanh lá: thắng từ 70%</span></div>
+      <div class="tablebox"><table class="champs" id="champTable">
+        <thead><tr><th>#</th><th>Tướng</th><th>Số ván</th><th class="n">Tỉ lệ thắng</th><th class="n">KDA</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section id="penta">
+    <div class="sec-h"><div class="lower"><span class="k">05</span><h2>Pentakill</h2></div></div>
+    <div class="pentas" id="pentas"></div>
+    <p class="src">Nguồn: <a href="https://gol.gg/players/player-history/3247/season-S11/split-ALL/tournament-ALL/champion-ALL/" target="_blank" rel="noopener">gol.gg</a> · <a href="https://liquipedia.net/leagueoflegends/Gumayusi" target="_blank" rel="noopener">Liquipedia</a> · <a href="https://www.oneesports.gg/league-of-legends/t1-gumayusi-pentakill-telecom/" target="_blank" rel="noopener">ONE Esports</a></p>
+  </section>
+
+  <section id="lifts">
+    <div class="sec-h"><div class="lower"><span class="k">06</span><h2>Khoảnh khắc nâng cúp</h2></div></div>
+    <div class="lifts">
+      <figure class="lift" style="margin:0"><div class="slot" data-slot="lift-w2025" data-label="Worlds 2025: nâng Summoner's Cup, Finals MVP" data-icon="person"></div><figcaption class="cap"><b>Worlds 2025</b><span>Finals MVP · T1 3–2 KT</span></figcaption></figure>
+      <figure class="lift" style="margin:0"><div class="slot" data-slot="lift-msi2026" data-label="MSI 2026 cùng HLE" data-icon="person"></div><figcaption class="cap"><b>MSI 2026</b><span>HLE 3–2 BLG · Daejeon</span></figcaption></figure>
+      <figure class="lift" style="margin:0"><div class="slot" data-slot="lift-w2024" data-label="Worlds 2024" data-icon="person"></div><figcaption class="cap"><b>Worlds 2024</b><span>T1 3–2 BLG</span></figcaption></figure>
+      <figure class="lift" style="margin:0"><div class="slot" data-slot="lift-w2023" data-label="Worlds 2023" data-icon="person"></div><figcaption class="cap"><b>Worlds 2023</b><span>T1 3–0 Weibo Gaming</span></figcaption></figure>
+      <figure class="lift" style="margin:0"><div class="slot" data-slot="lift-lck2022" data-label="LCK Mùa Xuân 2022" data-icon="person"></div><figcaption class="cap"><b>LCK Mùa Xuân 2022</b><span>T1</span></figcaption></figure>
+      <figure class="lift" style="margin:0"><div class="slot" data-slot="lift-asiad" data-label="Asian Games 2026" data-icon="person"></div><figcaption class="cap"><b>Asian Games 2026</b><span>HCV · Đội tuyển Hàn Quốc</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="sec-h"><div class="lower"><span class="k">07</span><h2>Thư viện ảnh</h2></div>
+      <div class="gal-tools">
+        <span class="gal-count" id="galCount"></span>
+        <div class="tabs" id="galYears" role="group" aria-label="Lọc ảnh theo năm"></div>
+        <button class="btn" type="button" id="galAdd" hidden><svg class="ic"><use href="#i-plus"/></svg>Thêm ảnh</button>
+      </div>
+    </div>
+    <div class="gal" id="galGrid"><p class="empty" style="grid-column:1/-1">Đang tải thư viện ảnh…</p></div>
+  </section>
+
+  <section id="media">
+    <div class="sec-h"><div class="lower"><span class="k">08</span><h2>Video &amp; trang stats</h2></div>
+      <div class="tabs" role="group" aria-label="Lọc liên kết">
+        <button class="tab" type="button" data-f="all" aria-pressed="true">Tất cả</button>
+        <button class="tab" type="button" data-f="yt" aria-pressed="false">YouTube</button>
+        <button class="tab" type="button" data-f="st" aria-pressed="false">Trang stats</button>
+      </div>
+    </div>
+    <div class="lgrid" id="linkGrid">
+      <a class="lk" data-g="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Gumayusi+highlights+2026"><span class="ib yt"><svg class="ic"><use href="#i-play"/></svg></span><div><span>YouTube</span><b>Highlights 2026</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=HLE+vs+BLG+MSI+2026+grand+final"><span class="ib yt"><svg class="ic"><use href="#i-play"/></svg></span><div><span>YouTube</span><b>Chung kết MSI 2026</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Gumayusi+pentakill"><span class="ib yt"><svg class="ic"><use href="#i-play"/></svg></span><div><span>YouTube</span><b>Các pha pentakill</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=T1+vs+KT+Worlds+2025+final+Gumayusi+MVP"><span class="ib yt"><svg class="ic"><use href="#i-play"/></svg></span><div><span>YouTube</span><b>Worlds 2025 · Finals MVP</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Gumayusi+vietsub"><span class="ib yt"><svg class="ic"><use href="#i-play"/></svg></span><div><span>YouTube</span><b>Video Vietsub</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="yt" target="_blank" rel="noopener" href="https://www.youtube.com/@lolesports"><span class="ib yt"><svg class="ic"><use href="#i-play"/></svg></span><div><span>Kênh</span><b>LoL Esports</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="st" target="_blank" rel="noopener" href="https://gol.gg/players/player-stats/3247/season-ALL/split-ALL/tournament-ALL/champion-ALL"><span class="ib"><svg class="ic"><use href="#i-chart"/></svg></span><div><span>gol.gg</span><b>Tướng, KDA, DPM theo giải</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="st" target="_blank" rel="noopener" href="https://gol.gg/players/player-matchlist/3247/season-S16/split-ALL/tournament-ALL/"><span class="ib"><svg class="ic"><use href="#i-chart"/></svg></span><div><span>gol.gg</span><b>Từng ván mùa 2026</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="st" target="_blank" rel="noopener" href="https://lol.fandom.com/wiki/Gumayusi"><span class="ib"><svg class="ic"><use href="#i-db"/></svg></span><div><span>Leaguepedia</span><b>Lịch sử trận &amp; kỷ lục</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="st" target="_blank" rel="noopener" href="https://liquipedia.net/leagueoflegends/Gumayusi"><span class="ib"><svg class="ic"><use href="#i-db"/></svg></span><div><span>Liquipedia</span><b>Tiền thưởng, hợp đồng</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="st" target="_blank" rel="noopener" href="https://escharts.com/players/gumayusi"><span class="ib"><svg class="ic"><use href="#i-chart"/></svg></span><div><span>Esports Charts</span><b>Lượt xem &amp; hồ sơ</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+      <a class="lk" data-g="st" target="_blank" rel="noopener" href="https://www.invenglobal.com/articles/23809/gumayusi-i-plan-to-give-my-best-until-2030"><span class="ib"><svg class="ic"><use href="#i-db"/></svg></span><div><span>Inven Global</span><b>Phỏng vấn sau MSI 2026</b></div><svg class="ic go"><use href="#i-ext"/></svg></a>
+    </div>
+  </section>
+
+  <section id="trivia">
+    <div class="sec-h"><div class="lower"><span class="k">09</span><h2>Fun fact</h2></div></div>
+    <div class="facts2">
+      <div class="ff"><small>Gia đình</small><b>Em trai INnoVation</b><span>Huyền thoại StarCraft II</span></div>
+      <div class="ff"><small>Tên thời thực tập</small><b>"Catan"</b><span>Trước khi lên đội chính T1</span></div>
+      <div class="ff"><small>Thần tượng</small><b>Uzi</b><span>Xạ thủ huyền thoại LPL</span></div>
+      <div class="ff"><small>Kỷ lục LCK</small><b>219 mạng</b><span>Trong một mùa, năm 2022</span></div>
+      <div class="ff"><small>Tướng tủ</small><b>Xayah</b><span>73 ván, thắng 74%</span></div>
+      <div class="ff"><small>Lời hứa</small><b>Đến năm 2030</b><span>Sẽ thi đấu hết mình</span></div>
+    </div>
+  </section>
+
+  <section id="notebook">
+    <div class="sec-h"><div class="lower"><span class="k">10</span><h2>Sổ tay của bạn</h2></div></div>
+    <div class="nb">
+      <form class="nbform cut" id="addForm" hidden>
+        <h3>THÊM MỤC MỚI</h3>
+        <div class="row2">
+          <label for="fKind">Loại
+            <select id="fKind"><option value="video">Video</option><option value="match">Trận đấu</option><option value="stat">Chỉ số</option><option value="news">Tin tức</option><option value="note">Ghi chú</option></select>
+          </label>
+          <label for="fDate">Ngày<input id="fDate" type="date"></label>
+        </div>
+        <label for="fTitle">Tiêu đề<input id="fTitle" required maxlength="160" placeholder="Pha 1v3 Varus vs BLG"></label>
+        <label for="fUrl">Link (YouTube, gol.gg…)<input id="fUrl" type="url" placeholder="https://"></label>
+        <label for="fNote">Ghi chú<textarea id="fNote" maxlength="2000" placeholder="Vì sao bạn lưu cái này?"></textarea></label>
+        <button class="btn" id="fSave" type="submit"><svg class="ic"><use href="#i-plus"/></svg>Lưu vào sổ tay</button>
+      </form>
+      <div class="nblist">
+        <div class="hd"><h3>Đã lưu</h3><span class="status" id="nbStatus" role="status">Đang kết nối…</span></div>
+        <div class="filters" id="filters" role="group" aria-label="Lọc theo loại"></div>
+        <ul class="entries" id="entries"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Trang fan không chính thức · Dữ liệu tổng hợp đến 24/11/2026</span><span>Ảnh do chủ trang tự tải lên</span></div></footer>
+<input type="file" id="filePick" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+<input type="file" id="galPick" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+<input type="file" id="vidPick" accept="video/mp4,video/webm" hidden>
+<dialog class="lb" id="lb" aria-label="Xem ảnh">
+  <div class="lb-in">
+    <div class="lb-img"><img id="lbImg" alt=""></div>
+    <div class="lb-bar">
+      <button class="lb-btn" type="button" id="lbPrev" aria-label="Ảnh trước">‹ Trước</button>
+      <p id="lbCap"></p>
+      <button class="lb-btn" type="button" id="lbMeta" hidden>Sửa chú thích</button>
+      <button class="lb-btn" type="button" id="lbEdit" hidden>Chỉnh ảnh</button>
+      <button class="lb-btn danger" type="button" id="lbDel" hidden>Xoá ảnh</button>
+      <button class="lb-btn" type="button" id="lbNext" aria-label="Ảnh sau">Sau ›</button>
+      <button class="lb-btn" type="button" id="lbClose">Đóng</button>
+    </div>
+    <form class="lb-form" id="lbForm" hidden>
+      <label for="lbCapIn">Chú thích<input id="lbCapIn" maxlength="120"></label>
+      <label for="lbYearIn">Năm<input id="lbYearIn" inputmode="numeric" maxlength="4" placeholder="2026"></label>
+      <button class="lb-btn" type="submit" id="lbMetaSave">Lưu</button>
+      <button class="lb-btn" type="button" id="lbMetaCancel">Huỷ</button>
+    </form>
+  </div>
+</dialog>
+<dialog class="ed" id="ed" aria-labelledby="edTitle">
+  <div class="ed-h"><h2 id="edTitle">Chỉnh ảnh</h2><span id="edStep"></span></div>
+  <div class="ed-b">
+    <div class="ed-stage" id="edStage"><canvas id="edCv" tabindex="0" aria-label="Khung cắt ảnh. Kéo để di chuyển ảnh, cuộn chuột để phóng to, phím mũi tên để dịch ảnh"></canvas></div>
+    <div class="ed-c">
+      <fieldset><legend>Tỉ lệ khung</legend><div class="ratios" id="edRatios" role="group" aria-label="Tỉ lệ khung"></div></fieldset>
+      <fieldset><legend>Khung hình</legend>
+        <label class="rng" for="edZoom">Thu phóng<input type="range" id="edZoom" min="1" max="4" step="0.01" value="1"><output id="oZoom" for="edZoom">100%</output></label>
+        <div class="ed-row">
+          <button class="btn btn-ghost" type="button" id="edRot">Xoay 90°</button>
+          <button class="btn btn-ghost" type="button" id="edFlip" aria-pressed="false">Lật ngang</button>
+        </div>
+      </fieldset>
+      <fieldset><legend>Màu sắc</legend>
+        <label class="rng" for="edBri">Độ sáng<input type="range" id="edBri" min="50" max="150" step="1" value="100"><output id="oBri" for="edBri">100</output></label>
+        <label class="rng" for="edCon">Tương phản<input type="range" id="edCon" min="50" max="150" step="1" value="100"><output id="oCon" for="edCon">100</output></label>
+        <label class="rng" for="edSat">Bão hoà<input type="range" id="edSat" min="0" max="200" step="1" value="100"><output id="oSat" for="edSat">100</output></label>
+      </fieldset>
+      <button class="btn btn-ghost" type="button" id="edReset">Đặt lại</button>
+      <p class="ed-info ok" id="edInfo" role="status"></p>
+      <p class="ed-hint">Kéo ảnh để chọn vùng cần giữ. Cuộn chuột, chụm hai ngón hoặc kéo thanh Thu phóng để phóng to.</p>
+    </div>
+  </div>
+  <div class="ed-f">
+    <button class="btn btn-ghost" type="button" id="edCancel">Huỷ</button>
+    <div class="ed-row">
+      <button class="btn btn-ghost" type="button" id="edRaw">Dùng ảnh gốc</button>
+      <button class="btn" type="button" id="edSave">Lưu ảnh</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="ytd" id="ytDlg" aria-label="Video HLE OFFICIAL #5"><div class="yt-frame"></div><button class="yt-close" type="button">Đóng video</button></dialog>
+<script>window.MEDIA={"e5422e1b8a5f7c547e5f6d0b212a3404":"media/e5422e1b8a5f7c547e5f6d0b212a3404.jpg","def371582bf37e71960fe337059826ca":"media/def371582bf37e71960fe337059826ca.jpg","c32e969602be67330d92ee6ac7696348":"media/c32e969602be67330d92ee6ac7696348.jpg","801b9a0b8bf2a08b4f470097a7ca8ecb":"media/801b9a0b8bf2a08b4f470097a7ca8ecb.jpg","86cb4585bd26c877847e23201b17dfea":"media/86cb4585bd26c877847e23201b17dfea.jpg","ba0552332cfbbc7f55f02d5fb4ee575a":"media/ba0552332cfbbc7f55f02d5fb4ee575a.png","887ad6a74f69d8b080881c299cacfe6c":"media/887ad6a74f69d8b080881c299cacfe6c.png","e02d04bd6cf4a156237c8e24c38f1938":"media/e02d04bd6cf4a156237c8e24c38f1938.jpg","57440a29cdca7c850aaf4d35783a2040":"media/57440a29cdca7c850aaf4d35783a2040.png","9535824452bf43294ae707978f89434b":"media/9535824452bf43294ae707978f89434b.jpg","485be979476949b42aec63cd0cf4fb38":"media/485be979476949b42aec63cd0cf4fb38.png","485f3e09ac27b68d7698fbcff4b01842":"media/485f3e09ac27b68d7698fbcff4b01842.jpg","ab3db7d98bd42591ca0ab9bce87a6be5":"media/ab3db7d98bd42591ca0ab9bce87a6be5.jpg","b85145995f0ea0a1921af8f6d6d82894":"media/b85145995f0ea0a1921af8f6d6d82894.jpg","60260c079bceb65765ebf3b34711f08f":"media/60260c079bceb65765ebf3b34711f08f.png","733c2befca7b8d91e2ed39bc00a50daf":"media/733c2befca7b8d91e2ed39bc00a50daf.jpg","8676d1f77253b36f8bf7aaa7c7d6753e":"media/8676d1f77253b36f8bf7aaa7c7d6753e.jpg","e197eca9c93638436419c92b3b4e5415":"media/e197eca9c93638436419c92b3b4e5415.jpg","b479591433a60c220603943174dca71f":"media/b479591433a60c220603943174dca71f.jpg","484d766dca7952649eb3a93ba07d2167":"media/484d766dca7952649eb3a93ba07d2167.jpg","f9473a4b800711f6240f016fd5fbbc91":"media/f9473a4b800711f6240f016fd5fbbc91.jpg","67cad293f3acf80fb7f9567bbf13b8fa":"media/67cad293f3acf80fb7f9567bbf13b8fa.jpg","b6ccc3315c2f80ebcf4a1cf0fb1cfffb":"media/b6ccc3315c2f80ebcf4a1cf0fb1cfffb.jpg","bb18d3808d754286c305855b150a4947":"media/bb18d3808d754286c305855b150a4947.jpg","7e10158d2a5e4d2b0daf39221d0d02b8":"media/7e10158d2a5e4d2b0daf39221d0d02b8.jpg","670c336dd51b2371aa090dbb8e9525d1":"media/670c336dd51b2371aa090dbb8e9525d1.jpg","1611985c6c1065ab2ce98a1981a1c95b":"media/1611985c6c1065ab2ce98a1981a1c95b.jpg","04b942f4a2d6c56ea31e3ca3586ab348":"media/04b942f4a2d6c56ea31e3ca3586ab348.jpg","3e0d9981576f77b5423e40f0b6da6182":"media/3e0d9981576f77b5423e40f0b6da6182.jpg","eef19ed5f896f26b5bf628cb34eca844":"media/eef19ed5f896f26b5bf628cb34eca844.jpg","d1ccb019658bfd33ea3f0e45397bf521":"media/d1ccb019658bfd33ea3f0e45397bf521.png","eb984202aca40bfbe7a4b986ee8b86a5":"media/eb984202aca40bfbe7a4b986ee8b86a5.png","3816a5ae53502587b3c2c62fd1205b41":"media/3816a5ae53502587b3c2c62fd1205b41.jpg","e819eb06e969a22bc363bd74095f32a0":"media/e819eb06e969a22bc363bd74095f32a0.jpg","76e65922f0bb678e0527397185066d66":"media/76e65922f0bb678e0527397185066d66.png","6293c7480f701f1e7747ab58591bf06a":"media/6293c7480f701f1e7747ab58591bf06a.png","886ca10feaefce8c341cacea586380ef":"media/886ca10feaefce8c341cacea586380ef.jpg","13defc409648857d310f6639a76b2b42":"media/13defc409648857d310f6639a76b2b42.jpg","6c80f20a503360b2b35145424bea7fd3":"media/6c80f20a503360b2b35145424bea7fd3.png","31c50bfdee66df3220195669f5e01cfa":"media/31c50bfdee66df3220195669f5e01cfa.jpg","5b7d9b0b032a5192188620de7fa79a63":"media/5b7d9b0b032a5192188620de7fa79a63.png","71c8fc91ad098f5d74690a230edaa5cc":"media/71c8fc91ad098f5d74690a230edaa5cc.jpg","6806c985ba098aa76f78989b20471eed":"media/6806c985ba098aa76f78989b20471eed.jpg","78a86f64a1d3982832b5444713df7d1a":"media/78a86f64a1d3982832b5444713df7d1a.jpg","7179b3919ceadcae8eb13bad8c8d7de1":"media/7179b3919ceadcae8eb13bad8c8d7de1.jpg","a68508a951da1d689c7fc7d8b821695d":"media/a68508a951da1d689c7fc7d8b821695d.jpg","bb14334c67bd97ac45c1f9d64e037ce2":"media/bb14334c67bd97ac45c1f9d64e037ce2.jpg","78cf4459a18ca9c2cdce806eea81f1fc":"media/78cf4459a18ca9c2cdce806eea81f1fc.jpg","2c0985b38ba2435f217729b1153b9ebe":"media/2c0985b38ba2435f217729b1153b9ebe.jpg","fee478fb65b4c0448f41f8617fdc44ab":"media/fee478fb65b4c0448f41f8617fdc44ab.jpg","94db09d26f3c5c217051fb3c720455a8":"media/94db09d26f3c5c217051fb3c720455a8.jpg","6139340efe8d82e457ddd801292ae845":"media/6139340efe8d82e457ddd801292ae845.png","96049000a45344c1a655fd69b0c15f0b":"media/96049000a45344c1a655fd69b0c15f0b.jpg","d935b862a239992f30f108e90ac2462f":"media/d935b862a239992f30f108e90ac2462f.jpg","2f5e9a9e0c1e27b1404e8902841adab4":"media/2f5e9a9e0c1e27b1404e8902841adab4.jpg","6f45785dd3151ce1e6b8017f39d6f33e":"media/6f45785dd3151ce1e6b8017f39d6f33e.png","deca39b019f18694d1b7770ef5e0f756":"media/deca39b019f18694d1b7770ef5e0f756.png","702d9f2ab188637432d9d8aa54024510":"media/702d9f2ab188637432d9d8aa54024510.jpg","02a8ecba228ee3580d811d58e80e9338":"media/02a8ecba228ee3580d811d58e80e9338.jpg","39968a4f4092a167a3f61384978d859a":"media/39968a4f4092a167a3f61384978d859a.jpg","905ba9ad80c39212da101f751e35f72c":"media/905ba9ad80c39212da101f751e35f72c.jpg","b20f2b413037b46d0c53910c057db375":"media/b20f2b413037b46d0c53910c057db375.jpg","c2b0e3c2c690162d21fc72db51ac0ff0":"media/c2b0e3c2c690162d21fc72db51ac0ff0.jpg","dac0c8db22b34a3879ce0671b354055d":"media/dac0c8db22b34a3879ce0671b354055d.webp","f574c7e4db1d255dd14884afcbc4a11b":"media/f574c7e4db1d255dd14884afcbc4a11b.jpg"};window.STATIC={"photos":{"cup-asiad":{"assetId":"2c0985b38ba2435f217729b1153b9ebe","updatedAt":1795507000000},"cup-ewc":{"assetId":"dac0c8db22b34a3879ce0671b354055d","updatedAt":1795508625768},"cup-lck":{"assetId":"a68508a951da1d689c7fc7d8b821695d","updatedAt":1795507000000},"cup-msi":{"assetId":"b20f2b413037b46d0c53910c057db375","updatedAt":1795511791060},"cup-w2023":{"assetId":"c2b0e3c2c690162d21fc72db51ac0ff0","updatedAt":1795511782959},"cup-w2024":{"assetId":"905ba9ad80c39212da101f751e35f72c","updatedAt":1795511777422},"cup-w2025":{"assetId":"670c336dd51b2371aa090dbb8e9525d1","updatedAt":1795509100000},"cup-worlds":{"assetId":"670c336dd51b2371aa090dbb8e9525d1","updatedAt":1795508940792},"hero":{"assetId":"96049000a45344c1a655fd69b0c15f0b","updatedAt":1795522800000},"lift-asiad":{"assetId":"2c0985b38ba2435f217729b1153b9ebe","updatedAt":1795507000000},"lift-lck2022":{"assetId":"2f5e9a9e0c1e27b1404e8902841adab4","updatedAt":1795507000000},"lift-msi2026":{"assetId":"02a8ecba228ee3580d811d58e80e9338","origId":"39968a4f4092a167a3f61384978d859a","updatedAt":1795522111519},"lift-w2023":{"assetId":"e5422e1b8a5f7c547e5f6d0b212a3404","updatedAt":1795507000000},"lift-w2024":{"assetId":"94db09d26f3c5c217051fb3c720455a8","updatedAt":1795507000000},"lift-w2025":{"assetId":"fee478fb65b4c0448f41f8617fdc44ab","updatedAt":1795507000000}},"gallery":[{"assetId":"1611985c6c1065ab2ce98a1981a1c95b","caption":"Poster Perfect Season · LCK Mùa Xuân 2022","order":1,"year":"2022","id":"g01"},{"assetId":"485f3e09ac27b68d7698fbcff4b01842","caption":"Bot of the Year 2023","order":8,"year":"2023","id":"g02"},{"assetId":"484d766dca7952649eb3a93ba07d2167","caption":"LCK Awards 2023","order":6,"year":"2023","id":"g03"},{"assetId":"78a86f64a1d3982832b5444713df7d1a","caption":"Nhận giải tại LCK Awards 2023","order":7,"year":"2023","id":"g04"},{"assetId":"3816a5ae53502587b3c2c62fd1205b41","caption":"Đế Summoner\u0027s Cup khắc tên các nhà vô địch","order":21,"year":"2025","id":"g05"},{"assetId":"886ca10feaefce8c341cacea586380ef","caption":"Summoner\u0027s Cup mới, 2025","order":22,"year":"2025","id":"g06"},{"assetId":"def371582bf37e71960fe337059826ca","caption":"A Cozy Afternoon","order":34,"year":"","id":"g07"},{"assetId":"ab3db7d98bd42591ca0ab9bce87a6be5","caption":"Gold King · LCK Awards 2022","order":5,"year":"2022","id":"g09"},{"assetId":"a68508a951da1d689c7fc7d8b821695d","caption":"T1 bên cúp LCK Mùa Xuân 2022","order":4,"year":"2022","id":"g10"},{"assetId":"b479591433a60c220603943174dca71f","caption":"Worlds 2024: ăn mừng trên sân khấu","order":13,"year":"2024","id":"g11"},{"assetId":"71c8fc91ad098f5d74690a230edaa5cc","caption":"Worlds 2024: bên Summoner\u0027s Cup","order":14,"year":"2024","id":"g12"},{"assetId":"94db09d26f3c5c217051fb3c720455a8","caption":"Worlds 2024: ôm Summoner\u0027s Cup","order":15,"year":"2024","id":"g13"},{"assetId":"733c2befca7b8d91e2ed39bc00a50daf","caption":"Worlds 2024: cái ôm sau chiến thắng","order":16,"year":"2024","id":"g14"},{"assetId":"13defc409648857d310f6639a76b2b42","caption":"Worlds 2025: Seized the World","order":23,"year":"2025","id":"g15"},{"assetId":"c32e969602be67330d92ee6ac7696348","caption":"Worlds 2025: bên hai chiếc cúp","order":24,"year":"2025","id":"g16"},{"assetId":"702d9f2ab188637432d9d8aa54024510","caption":"Worlds 2025: T1 cùng Summoner\u0027s Cup","order":25,"year":"2025","id":"g17"},{"assetId":"bb14334c67bd97ac45c1f9d64e037ce2","caption":"Poster vô địch Worlds 2023","order":11,"year":"2023","id":"g18"},{"assetId":"b85145995f0ea0a1921af8f6d6d82894","caption":"T1 vô địch LCK Mùa Xuân 2022, chung kết với Gen.G","order":2,"year":"2022","id":"g19"},{"assetId":"eef19ed5f896f26b5bf628cb34eca844","caption":"Worlds 2025: Summoner\u0027s Cup và cúp Finals MVP","order":26,"year":"2025","id":"g20"},{"assetId":"e02d04bd6cf4a156237c8e24c38f1938","caption":"Summoner\u0027s Cup tại Worlds 2024","order":12,"year":"2024","id":"g21"},{"assetId":"e197eca9c93638436419c92b3b4e5415","caption":"Hôn cúp trong màu áo Hanwha Life Esports","order":32,"year":"2026","id":"g22"},{"assetId":"bb18d3808d754286c305855b150a4947","caption":"Worlds 2025: tạo dáng cùng hai chiếc cúp","order":27,"year":"2025","id":"g23"},{"assetId":"fee478fb65b4c0448f41f8617fdc44ab","caption":"Worlds 2025: Finals MVP","order":28,"year":"2025","id":"g24"},{"assetId":"86cb4585bd26c877847e23201b17dfea","caption":"Worlds 2025: tung mũ ăn mừng","order":29,"year":"2025","id":"g25"},{"assetId":"7e10158d2a5e4d2b0daf39221d0d02b8","caption":"Worlds 2023: T1 bên Summoner\u0027s Cup","order":9,"year":"2023","id":"g26"},{"assetId":"e5422e1b8a5f7c547e5f6d0b212a3404","caption":"Worlds 2023: World Champions","order":10,"year":"2023","id":"g27"},{"assetId":"b6ccc3315c2f80ebcf4a1cf0fb1cfffb","caption":"Hôn Summoner\u0027s Cup","order":18,"year":"","id":"g28"},{"assetId":"2c0985b38ba2435f217729b1153b9ebe","caption":"HCV Asian Games 2026","order":33,"year":"2026","id":"g29"},{"assetId":"78cf4459a18ca9c2cdce806eea81f1fc","caption":"Golden Dew Duo · LCK Awards 2024","order":19,"year":"2024","id":"g30"},{"assetId":"04b942f4a2d6c56ea31e3ca3586ab348","caption":"Bot of the Year 2024","order":20,"year":"2024","id":"g31"},{"assetId":"2f5e9a9e0c1e27b1404e8902841adab4","caption":"Nâng cúp LCK Mùa Xuân 2022","order":3,"year":"2022","id":"g32"},{"assetId":"801b9a0b8bf2a08b4f470097a7ca8ecb","caption":"Poster vô địch Worlds 2024","order":17,"year":"2024","id":"g33"},{"assetId":"f9473a4b800711f6240f016fd5fbbc91","caption":"Chào mừng tới Hanwha Life Esports","order":31,"year":"2026","id":"g34"},{"assetId":"9535824452bf43294ae707978f89434b","caption":"Bot of the Year 2025","order":30,"year":"2025","id":"g35"},{"assetId":"f574c7e4db1d255dd14884afcbc4a11b","caption":"Ảnh bìa cũ (trước khi đổi sang thumbnail HLE OFFICIAL #5)","order":35,"year":"2026","id":"hero-old-2026-11-24"}],"champs":{"Aphelios":{"assetId":"887ad6a74f69d8b080881c299cacfe6c"},"Ashe":{"assetId":"57440a29cdca7c850aaf4d35783a2040"},"Caitlyn":{"assetId":"eb984202aca40bfbe7a4b986ee8b86a5"},"Corki":{"assetId":"d1ccb019658bfd33ea3f0e45397bf521"},"Jhin":{"assetId":"76e65922f0bb678e0527397185066d66"},"Jinx":{"assetId":"6806c985ba098aa76f78989b20471eed","skin":"T1 Jinx"},"Kalista":{"assetId":"6f45785dd3151ce1e6b8017f39d6f33e"},"KogMaw":{"assetId":"485be979476949b42aec63cd0cf4fb38"},"load-Jinx":{"assetId":"8676d1f77253b36f8bf7aaa7c7d6753e","skin":"T1 Jinx"},"load-MissFortune":{"assetId":"3e0d9981576f77b5423e40f0b6da6182","skin":"MVP T1 Miss Fortune"},"load-Varus":{"assetId":"31c50bfdee66df3220195669f5e01cfa","skin":"T1 Varus"},"load-Yunara":{"assetId":"67cad293f3acf80fb7f9567bbf13b8fa","skin":"T1 Yunara"},"Lucian":{"assetId":"ba0552332cfbbc7f55f02d5fb4ee575a"},"Mel":{"assetId":"6139340efe8d82e457ddd801292ae845"},"MissFortune":{"assetId":"d935b862a239992f30f108e90ac2462f","skin":"MVP T1 Miss Fortune"},"Senna":{"assetId":"60260c079bceb65765ebf3b34711f08f"},"Seraphine":{"assetId":"6293c7480f701f1e7747ab58591bf06a"},"Varus":{"assetId":"e819eb06e969a22bc363bd74095f32a0","skin":"T1 Varus"},"Xayah":{"assetId":"6c80f20a503360b2b35145424bea7fd3"},"Yunara":{"assetId":"7179b3919ceadcae8eb13bad8c8d7de1","skin":"T1 Yunara"},"Zeri":{"assetId":"5b7d9b0b032a5192188620de7fa79a63"},"Ziggs":{"assetId":"deca39b019f18694d1b7770ef5e0f756"}},"status":{"y2027":{"note":"Hợp đồng đến 15/11/2027 theo cơ sở dữ liệu hợp đồng của Riot. Mùa thứ hai cùng HLE, HLV trưởng mới là Mowgli.","state":"stay","team":"Hanwha Life Esports","updatedAt":1795521600000,"url":"https://lol.fandom.com/wiki/Archive:Global_Contract_Database/KR/Current"}}};</script>
+<script>/* Bản tĩnh cho GitHub Pages: dữ liệu và ảnh được đóng gói sẵn, không cần claude.ai */
+const YT_ID="BnokuoGxgSc";
+function BLOB(id){ return (window.MEDIA&&MEDIA[id])||""; }
+(function(){
+  const S=window.STATIC||{};
+  function rows(c){ const s=S[c]; if(Array.isArray(s)) return s.map(o=>({id:o.id,exists:true,data:()=>o,metadata:{fromCache:false}})); if(s) return Object.keys(s).map(k=>({id:k,exists:true,data:()=>s[k],metadata:{fromCache:false}})); return []; }
+  const ro=()=>Promise.reject({code:"invalid_argument",message:"read-only"});
+  function snap(d){ return {docs:d,size:d.length,empty:!d.length,metadata:{fromCache:false,hasPendingWrites:false},docChanges:()=>[]}; }
+  function Q(c,ord){
+    const list=()=>{ const d=rows(c); if(ord) d.sort((a,b)=>{ const x=a.data()[ord.f], y=b.data()[ord.f]; return (x>y?1:x<y?-1:0)*(ord.dir==="desc"?-1:1); }); return d; };
+    return { orderBy:(f,dir)=>Q(c,{f,dir}), where:()=>Q(c,ord), limit:()=>Q(c,ord),
+      onSnapshot:(cb)=>{ setTimeout(()=>cb(snap(list())),0); return ()=>{}; },
+      get:async()=>snap(list()), doc:(id)=>D(c+"/"+(id||"x")), add:ro };
+  }
+  function D(p){ const i=p.lastIndexOf("/"), c=p.slice(0,i), id=p.slice(i+1);
+    const one=()=>{ const s=S[c]; const o=s&&!Array.isArray(s)?s[id]:(Array.isArray(s)?s.find(x=>x.id===id):null); return {id,exists:!!o,data:()=>o||undefined,metadata:{fromCache:false}}; };
+    return { get:async()=>one(), onSnapshot:(cb)=>{ setTimeout(()=>cb(one()),0); return ()=>{}; }, set:ro, update:ro, delete:ro, collection:(n)=>Q(p+"/"+n) };
+  }
+  const db={collection:c=>Q(c),doc:p=>D(p)};
+  const user={can:async()=>false,canEdit:async()=>false,isOwner:async()=>false,id:async()=>null,me:async()=>null};
+  window.claude={use:async n=>n==="db"?db:n==="user"?user:null};
+})();
+/* video YouTube: nền chạy không tiếng ở đầu trang + trình phát có tiếng khi bấm nút */
+document.addEventListener("DOMContentLoaded",()=>{
+  const poster=document.querySelector(".poster"); if(!poster) return;
+  const bg=document.createElement("div"); bg.className="yt-bg"; bg.setAttribute("aria-hidden","true");
+  const f=document.createElement("iframe");
+  f.src=`https://www.youtube-nocookie.com/embed/${YT_ID}?autoplay=1&mute=1&loop=1&playlist=${YT_ID}&controls=0&playsinline=1&modestbranding=1&rel=0&disablekb=1`;
+  f.title="Video nền HLE OFFICIAL #5"; f.tabIndex=-1; f.allow="autoplay; encrypted-media; picture-in-picture";
+  bg.appendChild(f);
+  const slot=poster.querySelector(".slot"); slot?slot.after(bg):poster.prepend(bg);
+  const fit=()=>{ const r=poster.getBoundingClientRect(); const w=Math.max(r.width,r.height*16/9)*1.02; f.style.width=w+"px"; f.style.height=(w*9/16)+"px"; };
+  fit(); addEventListener("resize",fit);
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) bg.remove();
+  const btn=document.querySelector(".yt-btn"), dlg=document.getElementById("ytDlg");
+  if(btn&&dlg){
+    btn.addEventListener("click",e=>{ e.preventDefault(); dlg.querySelector(".yt-frame").innerHTML=`<iframe src="https://www.youtube.com/embed/${YT_ID}?autoplay=1&rel=0" title="HLE OFFICIAL #5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`; dlg.showModal(); });
+    const close=()=>{ dlg.close(); };
+    dlg.querySelector(".yt-close").addEventListener("click",close);
+    dlg.addEventListener("click",e=>{ if(e.target===dlg) close(); });
+    dlg.addEventListener("close",()=>{ dlg.querySelector(".yt-frame").innerHTML=""; });
+  }
+});
+</script>
+<script>
+const CHAMPS=[
+  {n:"Xayah",g:73,wr:74.0,kda:5.3},{n:"Varus",g:70,wr:74.3,kda:5.1},{n:"Jhin",g:69,wr:56.5,kda:6.3},
+  {n:"Aphelios",g:65,wr:63.1,kda:4.7},{n:"Lucian",g:64,wr:73.4,kda:4.2},{n:"Kalista",g:48,wr:64.6,kda:3.9},
+  {n:"Caitlyn",g:47,wr:76.6,kda:5.5},{n:"Ashe",g:44,wr:63.6,kda:3.7},{n:"Jinx",g:44,wr:70.5,kda:5.9},{n:"Senna",g:42,wr:76.2,kda:6.2}
+];
+const CNAME={MissFortune:"Miss Fortune",KogMaw:"Kog'Maw"};
+const SKINS=[
+  {id:"MissFortune",num:69,name:"MVP T1 Miss Fortune",when:"Finals MVP Worlds 2025"},
+  {id:"Yunara",num:10,name:"T1 Yunara",when:"Worlds 2025"},
+  {id:"Varus",num:69,name:"T1 Varus",when:"Worlds 2024"},
+  {id:"Jinx",num:62,name:"T1 Jinx",when:"Worlds 2023"}
+];
+/* mỗi ván: [tướng, "W"/"L", "K/D/A", DPM] theo thứ tự ván 1 → ván cuối */
+const EVENTS=[
+  {name:"Worlds 2026",date:"23/10 – 31/10",res:["out","2–3 · TOP 9–11"],note:"Dừng ở Swiss Stage. BLG vô địch sau khi thắng Gen.G 3–1 ở chung kết.",series:[
+    {d:"31/10",r:"Swiss · Vòng 5",o:"Bilibili Gaming",s:"0–2",w:0,g:[["Corki","L","7/2/8",696],["Caitlyn","L","2/2/1",331]]},
+    {d:"30/10",r:"Swiss · Vòng 4",o:"G2 Esports",s:"2–0",w:1,g:[["Corki","W","1/2/13",720],["Lucian","W","10/1/3",735]]},
+    {d:"25/10",r:"Swiss · Vòng 3",o:"Invictus Gaming",s:"0–1",w:0,g:[["Kalista","L","0/6/2",458]]},
+    {d:"24/10",r:"Swiss · Vòng 2",o:"Gen.G",s:"0–1",w:0,g:[["Jhin","L","1/1/2",452]]},
+    {d:"23/10",r:"Swiss · Vòng 1",o:"Top Esports",s:"1–0",w:1,g:[["Jhin","W","4/0/13",834]]}]},
+  {name:"LCK 2026 Playoffs",date:"02/09 – 13/09",res:["mid","Á QUÂN"],note:"Thua Gen.G 1–3 ở chung kết. Guma vào All-Pro 3rd Team.",series:[
+    {d:"13/09",r:"Chung kết",o:"Gen.G",s:"1–3",w:0,g:[["Caitlyn","W","2/4/7",664],["Yunara","L","1/4/1",474],["Ashe","L","0/4/4",337],["Jhin","L","1/1/1",441]]},
+    {d:"12/09",r:"Playoffs",o:"T1",s:"3–1",w:1,g:[["Jhin","W","9/1/2",743],["Caitlyn","W","8/1/2",970],["Ashe","L","2/6/13",548],["Xayah","W","4/0/6",625]]},
+    {d:"05/09",r:"Playoffs",o:"Gen.G",s:"1–3",w:0,g:[["Lucian","W","3/5/11",1087],["Caitlyn","L","8/5/8",841],["Ziggs","L","0/6/6",739],["Kalista","L","6/4/4",448]]},
+    {d:"02/09",r:"Playoffs",o:"T1",s:"3–2",w:1,g:[["Ashe","L","4/5/6",742],["Yunara","L","3/8/3",921],["MissFortune","W","5/3/6",579],["Varus","W","6/1/14",990],["Caitlyn","W","6/2/11",853]]}]},
+  {name:"Asian Games 2026",date:"09/2026",res:["win","HCV"],note:"Thi đấu cho đội tuyển Hàn Quốc tại Aichi-Nagoya.",series:[]},
+  {name:"Esports World Cup 2026",date:"15/07 – 17/07",res:["out","TỨ KẾT"],note:"Guma: “Đáng tiếc, nhưng đây là dịp xem trước phong độ các đội có thể gặp ở Worlds.”",series:[
+    {d:"17/07",r:"Tứ kết",o:"T1",s:"0–2",w:0,g:[["Caitlyn","L","2/7/0",400],["Jhin","L","5/3/2",858]]},
+    {d:"16/07",r:"",o:"JD Gaming",s:"1–0",w:1,g:[["Ziggs","W","2/5/10",668]]},
+    {d:"15/07",r:"",o:"Los Grandes",s:"1–0",w:1,g:[["Seraphine","W","7/0/13",840]]}]},
+  {name:"MSI 2026",date:"03/07 – 12/07",res:["win","VÔ ĐỊCH"],note:"Danh hiệu MSI đầu tiên của HLE, tại Daejeon. Zeus nhận Finals MVP.",series:[
+    {d:"12/07",r:"Chung kết tổng",o:"Bilibili Gaming",s:"3–2",w:1,g:[["Caitlyn","W","7/4/9",1220],["Ziggs","L","6/3/4",1053],["Xayah","L","5/2/1",713],["Ashe","W","4/4/10",530],["Yunara","W","4/6/12",831]]},
+    {d:"11/07",r:"Chung kết nhánh thua",o:"LYON",s:"3–2",w:1,g:[["Ziggs","W","7/3/11",926],["MissFortune","L","6/4/1",612],["KogMaw","L","1/7/4",575],["Caitlyn","W","4/0/7",658],["Kalista","W","5/1/11",848]]},
+    {d:"09/07",r:"Chung kết nhánh thắng",o:"Bilibili Gaming",s:"1–3",w:0,g:[["Ziggs","L","1/5/0",511],["Jhin","L","2/3/1",428],["Lucian","W","1/2/3",473],["Varus","L","4/4/3",852]]},
+    {d:"05/07",r:"Nhánh thắng · Vòng 2",o:"G2 Esports",s:"3–0",w:1,g:[["Ziggs","W","4/5/14",1140],["Lucian","W","11/1/10",1119],["Caitlyn","W","10/2/11",1261]]},
+    {d:"03/07",r:"Nhánh thắng · Vòng 1",o:"Team Secret Whales",s:"3–0",w:1,g:[["Ziggs","W","3/0/4",1023],["Mel","W","3/2/6",681],["MissFortune","W","4/4/6",652]]}]},
+  {name:"Gia nhập Hanwha Life Esports",date:"23/11/2025",res:["new","CHUYỂN ĐỘI"],note:"T1 chia tay ngày 17/11/2025; 6 ngày sau HLE công bố hợp đồng mùa 2026.",series:[]}
+];
+const PENTAS=[
+  {n:4,date:"12/12/2025",ev:"KeSPA Cup 2025",team:"HLE",vs:"Dplus KIA",champ:"Varus",kda:"12/3/2",res:"Thắng",dur:"36:08",note:"Pentakill đầu tiên trong màu áo HLE."},
+  {n:3,date:"08/02/2023",ev:"LCK Mùa Xuân 2023",team:"T1",vs:"BRION",champ:"Zeri",kda:"12/2/4",res:"Thắng",dur:"32:09",note:"Lần thứ hai với Zeri."},
+  {n:2,date:"27/07/2022",ev:"LCK Mùa Hè 2022",team:"T1",vs:"KT Rolster",champ:"Zeri",kda:"6/1/4",res:"Thắng",dur:"32:10",note:"Chốt hạ trận \"Telecom War\"."},
+  {n:1,date:"15/01/2021",ev:"LCK Mùa Xuân 2021",team:"T1",vs:"DWG KIA",champ:"Aphelios",kda:"7/0/3",res:"Thắng",dur:"",note:"Pentakill chuyên nghiệp đầu tiên."}
+];
+const YEARS=[
+  {y:2018,team:"KeG Seoul",c:"keg",role:"Nghiệp dư",roster:null,items:["Thắng HLE 2–1 tại KeSPA Cup 2018","HCV IeSF World Championship cùng đội tuyển Hàn Quốc","Tháng 12 vào T1 làm thực tập sinh"]},
+  {y:2019,team:"T1",c:"t1",role:"Thực tập sinh",roster:null,items:["Tập luyện với tên \"Catan\"","Lên đội chính ngày 26/11/2019"]},
+  {y:2020,team:"T1",c:"t1",role:"Debut chuyên nghiệp",roster:["Canna","Ellim","Faker","Gumayusi","Effort"],items:["Debut 08/09/2020 ở Vòng loại khu vực LCK, thắng Afreeca Freecs 3–1","Ván đầu tiên: Caitlyn 9/0/8","Thua Gen.G 0–3 ngày hôm sau, T1 lỡ Worlds 2020"]},
+  {y:2021,team:"T1",c:"t1",role:"Xạ thủ chính",roster:["Canna","Oner","Faker","Gumayusi","Keria"],items:["Bán kết Worlds 2021","Pentakill đầu tiên: Aphelios vs DWG KIA"]},
+  {y:2022,team:"T1",c:"t1",role:"Xạ thủ chính",roster:["Zeus","Oner","Faker","Gumayusi","Keria"],items:["Vô địch LCK Mùa Xuân, mùa giải hoàn hảo 18–0","Á quân MSI và Worlds","All-Pro 1st Team, Gold King","Kỷ lục 219 mạng trong một mùa LCK","Pentakill Zeri vs KT Rolster"]},
+  {y:2023,team:"T1",c:"t1",role:"Xạ thủ chính",roster:["Zeus","Oner","Faker","Gumayusi","Keria"],items:["Vô địch Worlds (3–0 WBG)","LCK Bot of the Year","All-Pro 1st Team Mùa Xuân, Gold King","Pentakill Zeri vs BRION"]},
+  {y:2024,team:"T1",c:"t1",role:"Xạ thủ chính",roster:["Zeus","Oner","Faker","Gumayusi","Keria"],items:["Vô địch Worlds (3–2 BLG)","Vô địch Esports World Cup","LCK Bot of the Year, All-Pro 3rd Team"]},
+  {y:2025,team:"T1",c:"t1",role:"Xạ thủ chính",roster:["Doran","Oner","Faker","Gumayusi","Keria"],items:["Vô địch Worlds (3–2 KT), Finals MVP","LCK Bot of the Year, All-Pro 3rd Team","Rời T1 ngày 17/11, gia nhập HLE ngày 23/11","Pentakill Varus vs Dplus KIA (KeSPA Cup, cùng HLE)"]},
+  {y:2026,team:"Hanwha Life Esports",c:"hle",role:"Xạ thủ chính",roster:["Zeus","Kanavi","Zeka","Gumayusi","Delight"],items:["Vô địch MSI (3–2 BLG)","HCV Asian Games","Á quân LCK, All-Pro 3rd Team","Tứ kết EWC, Swiss Stage Worlds (2–3)"]}
+];
+const DEBUT={date:"08/09/2020",ev:"Vòng loại khu vực LCK 2020",vs:"Afreeca Freecs",s:"3–1",
+  g:[["Caitlyn","W","9/0/8",592],["Draven","L","3/4/3",332],["Jhin","W","8/1/11",439],["Jhin","W","4/1/6",394]],
+  facts:[
+    "T1 buộc phải thắng để giữ hy vọng dự Worlds. Guma được tung vào thay Teddy, Ellim thay Cuzz, Faker trở lại đội hình.",
+    "Ván đầu tiên trong sự nghiệp: Caitlyn 9/0/8, không chết lần nào, có double kill từ sớm.",
+    "Ván 3: Jhin dùng Curtain Call hỗ trợ Ellim lấy double kill.",
+    "Ván 4: Canna (Mordekaiser) quadra kill khép lại loạt trận.",
+    "Ngày hôm sau (09/09) T1 thua Gen.G 0–3 và lỡ Worlds 2020."
+  ],
+  lineup:["Canna","Ellim","Faker","Gumayusi","Effort"]};
+const $=s=>document.querySelector(s);
+const SVGNS="http://www.w3.org/2000/svg";
+function icon(id,cls){const s=document.createElementNS(SVGNS,"svg");s.setAttribute("class",cls||"ic");s.setAttribute("aria-hidden","true");const u=document.createElementNS(SVGNS,"use");u.setAttribute("href","#"+id);s.appendChild(u);return s;}
+function el(tag,cls,text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+const vn=v=>String(v).replace(".",",");
+
+/* ảnh tướng: db "champs/<Id>" (ô vuông) và "champs/load-<Id>" (ảnh dọc skin) */
+let champImg={};
+function champSrc(key){ const a=champImg[key]; return a&&/^[0-9a-f]{32}$/.test(a)?BLOB(a):null; }
+function champEl(id,cls){
+  const box=el("span","ch "+(cls||"")); const src=champSrc(id); const nm=CNAME[id]||id;
+  if(src){ const i=el("img"); i.src=src; i.alt=""; i.loading="lazy"; box.appendChild(i); }
+  else box.appendChild(el("span","mono",nm.slice(0,2)));
+  box.title=nm; return box;
+}
+function kdaOf(list){ let k=0,d=0,a=0; list.forEach(s=>{const [x,y,z]=s.split("/").map(Number); k+=x; d+=y; a+=z;}); return {k,d,a,r:(k+a)/Math.max(1,d)}; }
+
+function renderEvents(){
+  const box=$("#events"); box.textContent="";
+  EVENTS.forEach(ev=>{
+    const card=el("article","event"+(ev.series.length?"":" slim"));
+    const hd=el("div","ev-h");
+    const t=el("div","ev-t"); t.append(el("span","ev-d",ev.date), el("h3",null,ev.name)); hd.appendChild(t);
+    const games=ev.series.flatMap(s=>s.g);
+    if(games.length){
+      const s=kdaOf(games.map(g=>g[2])), w=games.filter(g=>g[1]==="W").length;
+      const sum=el("div","ev-sum");
+      sum.append(el("span",null,`${w} thắng · ${games.length-w} thua`),el("span",null,`${s.k}/${s.d}/${s.a}`), el("span","kda",`KDA ${vn(s.r.toFixed(1))}`));
+      hd.appendChild(sum);
+    }
+    const pill=el("span","res cut "+ev.res[0],ev.res[1]); hd.appendChild(pill);
+    card.appendChild(hd);
+    if(ev.note) card.appendChild(el("p","ev-note",ev.note));
+    ev.series.forEach(s=>{
+      const row=el("div","srow");
+      const info=el("div","s-info");
+      info.append(el("span","sd",s.d));
+      const who=el("div","s-who"); if(s.r) who.appendChild(el("small",null,s.r)); who.appendChild(el("b",null,"vs "+s.o)); info.appendChild(who);
+      info.appendChild(el("b","sc "+(s.w?"w":"l"),s.s));
+      row.appendChild(info);
+      const gl=el("ol","games");
+      s.g.forEach((g,i)=>{
+        const li=el("li","gm "+(g[1]==="W"?"gw":"gl"));
+        li.appendChild(champEl(g[0]));
+        const tx=el("div","gm-t");
+        tx.append(el("small",null,`Ván ${i+1} · ${g[1]==="W"?"Thắng":"Thua"}`), el("b",null,CNAME[g[0]]||g[0]), el("span",null,`${g[2]} · ${g[3]} DPM`));
+        li.appendChild(tx); gl.appendChild(li);
+      });
+      row.appendChild(gl); card.appendChild(row);
+    });
+    box.appendChild(card);
+  });
+}
+function renderChampTable(){
+  const tb=$("#champTable tbody"); tb.textContent=""; const max=Math.max(...CHAMPS.map(c=>c.g));
+  CHAMPS.forEach((c,i)=>{
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td class="rk">${String(i+1).padStart(2,"0")}</td><td class="cn"></td><td><div class="gcell"><div class="bar"><i style="width:${(c.g/max*100).toFixed(1)}%"></i></div><b>${c.g}</b></div></td><td class="n ${c.wr>=70?"hi":""}">${vn(c.wr.toFixed(1))}%</td><td class="n">${vn(c.kda.toFixed(1))}</td>`;
+    const w=el("span","cnw"); w.append(champEl(c.n,"sm"), el("span",null,CNAME[c.n]||c.n)); tr.querySelector(".cn").appendChild(w); tb.appendChild(tr);
+  });
+}
+function renderPentas(){
+  const box=$("#pentas"); box.textContent="";
+  PENTAS.forEach(p=>{
+    const c=el("article","pk "+(p.team==="HLE"?"hle":"t1"));
+    const bg=champSrc("load-"+p.champ);
+    if(bg){ const i=el("img","pk-bg"); i.src=bg; i.alt=""; i.loading="lazy"; c.appendChild(i); }
+    c.appendChild(el("span","pk-n","#"+p.n));
+    const b=el("div","pk-b");
+    b.append(el("small",null,`${p.date} · ${p.ev}`), el("b","pk-word","PENTAKILL"));
+    b.appendChild(el("div","pk-vs",`${p.team} vs ${p.vs}`));
+    const line=el("div","pk-line"); line.append(champEl(p.champ,"sm"), el("span",null,CNAME[p.champ]||p.champ));
+    const st=el("div","pk-st"); st.append(el("span","k",p.kda), el("span","r",p.res+(p.dur?" · "+p.dur:"")));
+    b.append(line, st);
+    b.appendChild(el("p",null,p.note)); c.appendChild(b); box.appendChild(c);
+  });
+}
+function renderSkins(){
+  const box=$("#skins"); box.textContent="";
+  SKINS.forEach(s=>{
+    const c=el("figure","skin"); const src=champSrc("load-"+s.id);
+    const f=el("div","skin-img"); if(src){ const i=el("img"); i.src=src; i.alt=s.name; i.loading="lazy"; f.appendChild(i); } else { f.appendChild(champEl(s.id,"lg")); }
+    c.appendChild(f); const cap=el("figcaption"); cap.append(el("b",null,s.name), el("span",null,s.when)); c.appendChild(cap); box.appendChild(c);
+  });
+}
+let curYear=2026;
+function renderTimeline(){
+  const ol=$("#tline"); ol.textContent="";
+  YEARS.forEach(Y=>{
+    const li=el("li","tn "+Y.c); const b=el("button","tn-b"); b.type="button"; b.setAttribute("role","tab"); b.id="yr-"+Y.y;
+    b.setAttribute("aria-selected",String(Y.y===curYear)); b.tabIndex=Y.y===curYear?0:-1;
+    b.append(el("span","tn-dot"), el("b",null,String(Y.y)), el("small",null,Y.c==="hle"?"HLE":Y.c==="t1"?"T1":"KeG"));
+    b.onclick=()=>{ curYear=Y.y; renderTimeline(); renderYear(); };
+    b.onkeydown=e=>{ const i=YEARS.findIndex(x=>x.y===curYear); let j=i; if(e.key==="ArrowRight") j=Math.min(YEARS.length-1,i+1); if(e.key==="ArrowLeft") j=Math.max(0,i-1); if(j!==i){ e.preventDefault(); curYear=YEARS[j].y; renderTimeline(); renderYear(); $("#yr-"+curYear).focus(); } };
+    li.appendChild(b); ol.appendChild(li);
+  });
+}
+function renderYear(){
+  const Y=YEARS.find(x=>x.y===curYear), p=$("#yearcard"); p.textContent=""; p.className="yearcard "+Y.c; p.setAttribute("aria-labelledby","yr-"+Y.y);
+  const h=el("div","yc-h"); h.append(el("span","yc-y",String(Y.y)), el("div","yc-t")); h.lastChild.append(el("b",null,Y.team), el("span",null,Y.role)); p.appendChild(h);
+  const body=el("div","yc-b");
+  if(Y.roster){ const r=el("div","yc-r"); r.appendChild(el("small",null,"ĐỘI HÌNH")); const ul=el("ul"); Y.roster.forEach(n=>ul.appendChild(el("li",n==="Gumayusi"?"me":null,n))); r.appendChild(ul); body.appendChild(r); }
+  const a=el("div","yc-a"); a.appendChild(el("small",null,"DẤU ẤN")); const ul=el("ul"); Y.items.forEach(t=>ul.appendChild(el("li",null,t))); a.appendChild(ul); body.appendChild(a);
+  p.appendChild(body);
+}
+function renderDebut(){
+  const box=$("#debut"); box.textContent="";
+  const l=el("div","db-l");
+  l.append(el("small",null,"DEBUT CHUYÊN NGHIỆP"), el("b","db-date",DEBUT.date), el("span",null,DEBUT.ev));
+  const s=kdaOf(DEBUT.g.map(g=>g[2]));
+  const kp=el("div","db-k"); kp.append(el("span",null,`${s.k}/${s.d}/${s.a}`), el("span","kda",`KDA ${vn(s.r.toFixed(1))}`)); l.appendChild(kp);
+  const r=el("div","db-r");
+  const head=el("div","db-h"); head.append(el("b",null,"T1 "), el("em",null,DEBUT.s), el("b",null," "+DEBUT.vs)); r.appendChild(head);
+  const lu=el("ul","db-lu"); DEBUT.lineup.forEach(n=>lu.appendChild(el("li",n==="Gumayusi"?"me":null,n))); r.appendChild(lu);
+  const gl=el("ol","games");
+  DEBUT.g.forEach((g,i)=>{ const li=el("li","gm "+(g[1]==="W"?"gw":"gl")); li.appendChild(champEl(g[0])); const tx=el("div","gm-t"); tx.append(el("small",null,`Ván ${i+1} · ${g[1]==="W"?"Thắng":"Thua"}`), el("b",null,g[0]), el("span",null,`${g[2]} · ${g[3]} DPM`)); li.appendChild(tx); gl.appendChild(li); });
+  r.appendChild(gl);
+  const ul=el("ul","db-f"); DEBUT.facts.forEach(t=>ul.appendChild(el("li",null,t))); r.appendChild(ul);
+  const src=el("p","src"); src.append("Nguồn: "); [["gol.gg","https://gol.gg/players/player-matchlist/3247/season-S10/split-ALL/tournament-ALL/"],["ONE Esports","https://www.oneesports.gg/league-of-legends/t1-debuts-new-adc-gumayusi-in-a-must-win-regional-final-match/"]].forEach(([t,u],i)=>{ if(i) src.append(" · "); const a=el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; src.appendChild(a); }); r.appendChild(src);
+  box.append(l,r);
+}
+function renderChampViews(){ renderEvents(); renderChampTable(); renderPentas(); renderSkins(); renderDebut(); }
+
+(function(){
+  renderChampViews(); renderTimeline(); renderYear();
+  const burger=$("#burger"), menu=$("#menu");
+  const setMenu=o=>{ menu.classList.toggle("open",o); burger.setAttribute("aria-expanded",String(o)); burger.setAttribute("aria-label",o?"Đóng menu":"Mở menu"); };
+  burger.addEventListener("click",()=>setMenu(!menu.classList.contains("open")));
+  menu.addEventListener("click",e=>{ if(e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&menu.classList.contains("open")){ setMenu(false); burger.focus(); } });
+  document.addEventListener("click",e=>{ if(menu.classList.contains("open")&&!e.target.closest(".topbar")) setMenu(false); });
+  const tabs=document.querySelectorAll("#media .tab");
+  tabs.forEach(t=>t.addEventListener("click",()=>{
+    tabs.forEach(x=>x.setAttribute("aria-pressed",String(x===t)));
+    document.querySelectorAll("#linkGrid .lk").forEach(a=>{a.hidden=!(t.dataset.f==="all"||a.dataset.g===t.dataset.f);});
+  }));
+})();
+
+/* ---------- ảnh ---------- */
+let photos={}, assets=null, pdb=null, pickSlot=null;
+const ID_RE=/^[0-9a-f]{32}$/;
+function buildSlots(){
+  document.querySelectorAll(".slot").forEach(el=>{
+    el.textContent="";
+    const ph=document.createElement("div"); ph.className="ph";
+    ph.appendChild(icon(el.dataset.icon||"cup",""));
+    const t=document.createElement("span"); t.textContent=el.dataset.label||"Chưa có ảnh"; ph.appendChild(t);
+    const img=document.createElement("img"); img.alt=el.dataset.label||""; img.hidden=true; img.loading="lazy";
+    img.onerror=()=>{img.hidden=true;ph.hidden=false;};
+    el.append(ph,img);
+  });
+}
+function paintSlots(){
+  document.querySelectorAll(".slot").forEach(el=>{
+    const p=photos[el.dataset.slot], img=el.querySelector("img"), ph=el.querySelector(".ph");
+    const ok=p&&typeof p.assetId==="string"&&ID_RE.test(p.assetId);
+    if(ok){ const src=BLOB(p.assetId); if(img.getAttribute("src")!==src) img.src=src; img.hidden=false; ph.hidden=true; }
+    else { img.hidden=true; img.removeAttribute("src"); ph.hidden=false; }
+    const isHero=el.dataset.slot==="hero", hv=isHero&&photos.heroVideo&&ID_RE.test(photos.heroVideo.assetId||"")?photos.heroVideo.assetId:null;
+    if(isHero){
+      let v=el.querySelector("video");
+      if(hv){
+        if(!v){ v=document.createElement("video"); v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute("playsinline",""); v.setAttribute("aria-hidden","true"); v.preload="metadata"; img.after(v); }
+        const src=BLOB(hv); if(v.getAttribute("src")!==src){ v.src=src; if(!matchMedia("(prefers-reduced-motion: reduce)").matches){ v.autoplay=true; v.play().catch(()=>{}); } }
+        ph.hidden=true;
+      } else if(v){ v.remove(); }
+    }
+    let t=el.querySelector(".tools");
+    if(assets){
+      if(!t){ t=document.createElement("div"); t.className="tools"; el.appendChild(t); }
+      t.textContent="";
+      const label=el.dataset.label||"ảnh";
+      if(ok){ const ed=document.createElement("button"); ed.type="button"; ed.className="up"; ed.append(icon("i-crop"),"Chỉnh"); ed.setAttribute("aria-label","Cắt và chỉnh "+label); ed.onclick=()=>editSlot(el.dataset.slot); t.appendChild(ed); }
+      const b=document.createElement("button"); b.type="button"; b.className="up"; b.append(icon("i-up"), ok?"Đổi ảnh":"Tải ảnh");
+      b.setAttribute("aria-label",(ok?"Đổi ":"Tải ")+label);
+      b.onclick=()=>{pickSlot=el.dataset.slot; $("#filePick").value=""; $("#filePick").click();}; t.appendChild(b);
+      if(isHero){
+        const vb=document.createElement("button"); vb.type="button"; vb.className="up"; vb.append(icon("i-play"), hv?"Đổi video":"Tải video");
+        vb.setAttribute("aria-label",(hv?"Đổi":"Tải")+" video nền đầu trang (mp4 hoặc webm, tối đa 20 MB)");
+        vb.onclick=()=>{ $("#vidPick").value=""; $("#vidPick").click(); }; t.appendChild(vb);
+        if(hv){ const rb=document.createElement("button"); rb.type="button"; rb.className="up"; rb.textContent="Bỏ video";
+          rb.onclick=async()=>{ if(rb.dataset.sure!=="1"){ rb.dataset.sure="1"; rb.textContent="Bấm lần nữa để bỏ video"; return; }
+            try{ await pdb.doc("photos/heroVideo").delete(); delete photos.heroVideo; paintSlots(); await dropIfUnused([hv]); }catch(err){ flashMsg(el,"Chưa bỏ được video."); } };
+          t.appendChild(rb); }
+      }
+    } else if(t) t.remove();
+  });
+}
+buildSlots(); paintSlots();
+
+/* ---------- trình chỉnh ảnh ---------- */
+const ED={img:null,rot:0,flip:false,z:1,ox:0,oy:0,ratio:"slot",slotA:null,W:0,H:0,resolve:null};
+const RATIOS=[["slot","Theo ô"],["orig","Gốc"],["1","1:1"],["0.8","4:5"],["0.75","3:4"],["1.3333","4:3"],["1.7778","16:9"]];
+function edDims(){ const iw=ED.img.naturalWidth, ih=ED.img.naturalHeight; return ED.rot%180?[ih,iw]:[iw,ih]; }
+function edA(){ if(ED.ratio==="slot"&&ED.slotA) return ED.slotA; if(ED.ratio==="orig"||ED.ratio==="slot"){ const [w,h]=edDims(); return w/h; } return parseFloat(ED.ratio); }
+function edScale(){ const [ew,eh]=edDims(); return Math.max(ED.W/ew,ED.H/eh)*ED.z; }
+function edClamp(){ const [ew,eh]=edDims(), s=edScale(); const mx=Math.max(0,(ew*s-ED.W)/2), my=Math.max(0,(eh*s-ED.H)/2); ED.ox=Math.min(mx,Math.max(-mx,ED.ox)); ED.oy=Math.min(my,Math.max(-my,ED.oy)); }
+function edFilter(){ const b=$("#edBri").value,c=$("#edCon").value,s=$("#edSat").value; return (b==100&&c==100&&s==100)?"":`brightness(${b}%) contrast(${c}%) saturate(${s}%)`; }
+/* thu nhỏ từng nửa một để không răng cưa khi ảnh gốc lớn hơn nhiều so với ảnh xuất */
+function stepDown(img,tw,th){
+  let src=img, w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
+  while(w/2>=tw&&h/2>=th&&w>4&&h>4){
+    const c=document.createElement("canvas"); c.width=Math.round(w/2); c.height=Math.round(h/2);
+    const x=c.getContext("2d"); x.imageSmoothingEnabled=true; x.imageSmoothingQuality="high"; x.drawImage(src,0,0,c.width,c.height);
+    src=c; w=c.width; h=c.height;
+  }
+  return src;
+}
+function edPaint(ctx,W,H,k,src){
+  const s=edScale()*k, iw=ED.img.naturalWidth, ih=ED.img.naturalHeight;
+  ctx.save(); ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality="high"; ctx.fillStyle="#000"; ctx.fillRect(0,0,W,H);
+  const f=edFilter(); if(f) ctx.filter=f;
+  ctx.translate(W/2+ED.ox*k,H/2+ED.oy*k); ctx.scale(ED.flip?-1:1,1); ctx.rotate(ED.rot*Math.PI/180);
+  ctx.drawImage(src||ED.img,-iw*s/2,-ih*s/2,iw*s,ih*s); ctx.restore();
+}
+function edOut(){ const s=edScale(), big=Math.max(ED.W,ED.H); const k=Math.min(1/s,(ED.maxEdge||2400)/big); return {k,w:Math.max(1,Math.round(ED.W*k)),h:Math.max(1,Math.round(ED.H*k))}; }
+function edInfo(){
+  const {w,h}=edOut(), ok=Math.max(w,h)>=(ED.minEdge||1000), box=$("#edInfo");
+  box.textContent=`Ảnh xuất: ${w} × ${h} px · `+(ok?"Đủ nét":"Ảnh gốc nhỏ, có thể hơi mờ khi hiển thị lớn. Thu phóng ít lại hoặc chọn ảnh lớn hơn.");
+  box.className="ed-info "+(ok?"ok":"warn");
+}
+function edDraw(){
+  if(!ED.img) return; const cv=$("#edCv"), d=window.devicePixelRatio||1, ctx=cv.getContext("2d");
+  const s=edScale()*d; if(!ED.prev||ED.prevS!==s){ ED.prev=stepDown(ED.img,ED.img.naturalWidth*s,ED.img.naturalHeight*s); ED.prevS=s; }
+  ctx.setTransform(d,0,0,d,0,0); edPaint(ctx,ED.W,ED.H,1,ED.prev); edInfo();
+  ctx.strokeStyle="rgba(255,255,255,.35)"; ctx.lineWidth=1; ctx.beginPath();
+  for(let i=1;i<3;i++){ ctx.moveTo(ED.W*i/3,0); ctx.lineTo(ED.W*i/3,ED.H); ctx.moveTo(0,ED.H*i/3); ctx.lineTo(ED.W,ED.H*i/3); }
+  ctx.stroke();
+}
+function edLayout(){
+  if(!ED.img) return; const st=$("#edStage"), A=edA();
+  const aw=Math.max(200,st.clientWidth-24), ah=Math.max(220,Math.min(window.innerHeight*0.56,560));
+  ED.W=Math.min(aw,ah*A); ED.H=ED.W/A;
+  const cv=$("#edCv"), d=window.devicePixelRatio||1; cv.width=Math.round(ED.W*d); cv.height=Math.round(ED.H*d); cv.style.width=ED.W+"px"; cv.style.height=ED.H+"px";
+  edClamp(); edDraw();
+}
+function edSync(){ $("#oZoom").textContent=Math.round(ED.z*100)+"%"; $("#oBri").textContent=$("#edBri").value; $("#oCon").textContent=$("#edCon").value; $("#oSat").textContent=$("#edSat").value; $("#edFlip").setAttribute("aria-pressed",String(ED.flip)); }
+function edRatios(){
+  const box=$("#edRatios"); box.textContent="";
+  RATIOS.forEach(([v,l])=>{ if(v==="slot"&&!ED.slotA) return; const b=document.createElement("button"); b.type="button"; b.className="tab"; b.textContent=l; b.setAttribute("aria-pressed",String(ED.ratio===v)); b.onclick=()=>{ED.ratio=v; ED.ox=ED.oy=0; edRatios(); edLayout();}; box.appendChild(b); });
+}
+function setZoom(z){ ED.z=Math.min(4,Math.max(1,z)); $("#edZoom").value=ED.z; edClamp(); edDraw(); edSync(); }
+function edResetAll(){ ED.rot=0; ED.flip=false; ED.z=1; ED.ox=ED.oy=0; ED.ratio=ED.slotA?"slot":"orig"; ["edBri","edCon","edSat"].forEach(id=>$("#"+id).value=100); $("#edZoom").value=1; edRatios(); edSync(); edLayout(); }
+function openEditor(o){
+  return new Promise(res=>{
+    const img=new Image();
+    img.onload=()=>{
+      ED.img=img; ED.slotA=o.aspect||null; ED.resolve=res; ED.prev=null; ED.maxEdge=o.maxEdge||2400; ED.minEdge=o.minEdge||1000;
+      $("#edTitle").textContent=o.title||"Chỉnh ảnh"; $("#edStep").textContent=o.step||""; $("#edRaw").hidden=!o.allowRaw;
+      $("#edSave").textContent=o.saveLabel||"Lưu ảnh";
+      const d=$("#ed"); try{ d.showModal(); }catch(e){ d.setAttribute("open",""); }
+      edResetAll(); requestAnimationFrame(edLayout); setTimeout(()=>$("#edCv").focus(),50);
+    };
+    img.onerror=()=>res(null);
+    img.src=o.src;
+  });
+}
+function edClose(v){ const d=$("#ed"); try{ d.close(); }catch(e){ d.removeAttribute("open"); } const r=ED.resolve; ED.resolve=null; ED.img=null; ED.prev=null; if(r) r(v); }
+function edExport(){
+  const {k,w,h}=edOut(), s=edScale()*k;
+  const src=stepDown(ED.img,ED.img.naturalWidth*s,ED.img.naturalHeight*s);
+  const c=document.createElement("canvas"); c.width=w; c.height=h;
+  edPaint(c.getContext("2d"),w,h,k,src);
+  return new Promise(r=>c.toBlob(b=>r(b),"image/jpeg",0.95));
+}
+(function(){
+  const cv=$("#edCv"), pts=new Map(); let drag=null, pinch=null;
+  cv.addEventListener("pointerdown",e=>{ pts.set(e.pointerId,{x:e.clientX,y:e.clientY}); cv.setPointerCapture(e.pointerId);
+    if(pts.size===1) drag={x:e.clientX,y:e.clientY,ox:ED.ox,oy:ED.oy};
+    if(pts.size===2){ const [a,b]=[...pts.values()]; pinch={d:Math.hypot(a.x-b.x,a.y-b.y),z:ED.z}; drag=null; } });
+  cv.addEventListener("pointermove",e=>{ if(!pts.has(e.pointerId)) return; pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pinch&&pts.size===2){ const [a,b]=[...pts.values()]; setZoom(pinch.z*Math.hypot(a.x-b.x,a.y-b.y)/pinch.d); return; }
+    if(drag){ ED.ox=drag.ox+(e.clientX-drag.x); ED.oy=drag.oy+(e.clientY-drag.y); edClamp(); edDraw(); } });
+  const up=e=>{ pts.delete(e.pointerId); if(pts.size<2) pinch=null; if(pts.size===0) drag=null; };
+  cv.addEventListener("pointerup",up); cv.addEventListener("pointercancel",up);
+  cv.addEventListener("wheel",e=>{ e.preventDefault(); setZoom(ED.z*(e.deltaY<0?1.08:1/1.08)); },{passive:false});
+  cv.addEventListener("keydown",e=>{ const st=e.shiftKey?40:10, m={ArrowLeft:[st,0],ArrowRight:[-st,0],ArrowUp:[0,st],ArrowDown:[0,-st]}[e.key];
+    if(m){ e.preventDefault(); ED.ox+=m[0]; ED.oy+=m[1]; edClamp(); edDraw(); } else if(e.key==="+"||e.key==="="){ setZoom(ED.z*1.1); } else if(e.key==="-"){ setZoom(ED.z/1.1); } });
+  $("#edZoom").addEventListener("input",e=>setZoom(parseFloat(e.target.value)));
+  ["edBri","edCon","edSat"].forEach(id=>$("#"+id).addEventListener("input",()=>{edSync(); edDraw();}));
+  $("#edRot").onclick=()=>{ ED.rot=(ED.rot+90)%360; ED.ox=ED.oy=0; edLayout(); };
+  $("#edFlip").onclick=()=>{ ED.flip=!ED.flip; edSync(); edDraw(); };
+  $("#edReset").onclick=edResetAll;
+  $("#edCancel").onclick=()=>edClose(null);
+  $("#edRaw").onclick=()=>edClose({raw:true});
+  $("#edSave").onclick=async()=>{ const b=$("#edSave"); b.disabled=true; const blob=await edExport(); b.disabled=false; edClose(blob?{blob}:null); };
+  $("#ed").addEventListener("cancel",e=>{ e.preventDefault(); edClose(null); });
+  window.addEventListener("resize",()=>{ if($("#ed").open) edLayout(); });
+})();
+
+/* ---------- tải ảnh vào ô ---------- */
+function slotAspect(slot){ return slot==="hero"?16/9:slot.startsWith("cup-")?4/3:0.75; }
+function inUse(id){ return Object.values(photos).some(p=>p&&(p.assetId===id||p.origId===id))||gal.some(g=>g.assetId===id||g.origId===id); }
+function slotSize(slot){ return slot==="hero"?{maxEdge:3200,minEdge:1800}:slot==="lift-w2025"?{maxEdge:2400,minEdge:1100}:{maxEdge:1800,minEdge:800}; }
+async function upBlob(b){ return assets.upload(b, b.type?undefined:{type:"image/jpeg"}); }
+async function dropIfUnused(ids){ for(const id of ids){ if(id&&ID_RE.test(id)&&!inUse(id)){ try{ await assets.delete(id);}catch(_){} } } }
+function uploadErr(err){ const c=err&&err.code; return c==="too_large"?"Ảnh quá lớn.":c==="unsupported_type"?"Định dạng ảnh không được hỗ trợ.":c==="quota_or_state"?"Kho ảnh của trang đã đầy.":c==="rate_limited"?"Tải quá nhanh, đợi chút rồi thử lại.":"Chưa tải được ảnh ("+(c||"lỗi")+"), thử lại sau."; }
+$("#vidPick").addEventListener("change",async e=>{
+  const f=e.target.files&&e.target.files[0]; if(!f||!assets||!pdb) return;
+  const el=document.querySelector('.slot[data-slot="hero"]');
+  if(!/^video\/(mp4|webm)$/.test(f.type)){ flashMsg(el,"Chỉ nhận video MP4 hoặc WEBM."); return; }
+  if(f.size>20*1024*1024){ flashMsg(el,"Video lớn hơn 20 MB. Hãy cắt ngắn hoặc nén nhỏ hơn."); return; }
+  const busy=document.createElement("div"); busy.className="busy"; busy.textContent="Đang tải video…"; el.appendChild(busy);
+  try{
+    const r=await assets.upload(f);
+    const old=photos.heroVideo&&photos.heroVideo.assetId;
+    const doc={assetId:r.id,updatedAt:Date.now()};
+    await pdb.doc("photos/heroVideo").set(doc); photos.heroVideo=doc; paintSlots();
+    if(old&&old!==r.id) await dropIfUnused([old]);
+    busy.remove();
+  }catch(err){ busy.remove(); flashMsg(el,uploadErr(err)); }
+});
+/* opt.orig: file gốc cần lưu kèm; opt.origId: id ảnh gốc đã có */
+async function putSlot(slot,blob,opt={}){
+  const el=document.querySelector(`.slot[data-slot="${slot}"]`);
+  const busy=document.createElement("div"); busy.className="busy"; busy.textContent="Đang lưu ảnh…"; el.appendChild(busy);
+  try{
+    const r=await upBlob(blob);
+    let origId=opt.origId||null;
+    if(opt.orig){ busy.textContent="Đang lưu ảnh gốc…"; try{ origId=(await upBlob(opt.orig)).id; }catch(_){ origId=null; } }
+    const prev=photos[slot]||{};
+    const doc={assetId:r.id,updatedAt:Date.now()}; if(origId&&origId!==r.id) doc.origId=origId;
+    await pdb.doc("photos/"+slot).set(doc);
+    photos[slot]=doc; paintSlots();
+    await dropIfUnused([prev.assetId,prev.origId].filter(x=>x&&x!==r.id&&x!==origId));
+    busy.remove();
+  }catch(err){ busy.remove(); flashMsg(el,uploadErr(err)); }
+}
+async function editSlot(slot){
+  const p=photos[slot]; if(!p||!ID_RE.test(p.assetId)||!assets) return;
+  const el=document.querySelector(`.slot[data-slot="${slot}"]`);
+  const src=p.origId&&ID_RE.test(p.origId)?p.origId:p.assetId;
+  const r=await openEditor({src:BLOB(src),aspect:slotAspect(slot),...slotSize(slot),title:"Chỉnh ảnh: "+(el.dataset.label||""),step:p.origId?"Đang chỉnh từ ảnh gốc":"",saveLabel:"Lưu ảnh đã chỉnh"});
+  if(r&&r.blob) await putSlot(slot,r.blob,{origId:src});
+}
+$("#filePick").addEventListener("change",async e=>{
+  const file=e.target.files&&e.target.files[0], slot=pickSlot; if(!file||!slot||!assets||!pdb) return;
+  const el=document.querySelector(`.slot[data-slot="${slot}"]`);
+  if(!/^image\/(png|jpeg|webp|gif)$/.test(file.type)){ flashMsg(el,"Chỉ nhận ảnh PNG, JPG, WEBP hoặc GIF."); return; }
+  if(file.size>20*1024*1024){ flashMsg(el,"Ảnh lớn hơn 20 MB, hãy chọn ảnh nhỏ hơn."); return; }
+  const url=URL.createObjectURL(file);
+  const r=await openEditor({src:url,aspect:slotAspect(slot),...slotSize(slot),title:"Cắt ảnh cho ô: "+(el.dataset.label||""),allowRaw:true,saveLabel:"Lưu và tải lên"});
+  URL.revokeObjectURL(url);
+  if(!r){ return; }
+  if(r.raw) await putSlot(slot,file); else await putSlot(slot,r.blob,{orig:file});
+});
+function flashMsg(el,msg){ const d=document.createElement("div"); d.className="busy"; d.textContent=msg; el.appendChild(d); setTimeout(()=>d.remove(),3500); }
+
+/* ---------- thư viện ảnh ---------- */
+let gal=[], galYear="all", lbIdx=-1, lbConfirm=false;
+function galList(){ return gal.filter(g=>galYear==="all"||String(g.year||"")===galYear); }
+function renderGallery(){
+  const years=[...new Set(gal.map(g=>String(g.year||"")).filter(Boolean))].sort();
+  const yb=$("#galYears"); yb.textContent="";
+  ["all",...years].forEach(y=>{ const b=document.createElement("button"); b.type="button"; b.className="tab"; b.textContent=y==="all"?"Tất cả":y; b.setAttribute("aria-pressed",String(galYear===y)); b.onclick=()=>{galYear=y; renderGallery();}; yb.appendChild(b); });
+  $("#galCount").textContent=gal.length?`${gal.length} ảnh`:"";
+  const grid=$("#galGrid"); grid.textContent="";
+  const list=galList();
+  if(!list.length){ const p=document.createElement("p"); p.className="empty"; p.style.gridColumn="1/-1"; p.textContent=gal.length?"Không có ảnh nào trong năm này.":"Thư viện đang trống. Bấm Thêm ảnh để tải ảnh lên."; grid.appendChild(p); return; }
+  list.forEach((g,i)=>{
+    const b=document.createElement("button"); b.type="button"; b.className="gt"; b.setAttribute("aria-label","Xem ảnh: "+(g.caption||"ảnh"));
+    const img=document.createElement("img"); img.loading="lazy"; img.alt=g.caption||""; img.src=BLOB(g.assetId); b.appendChild(img);
+    if(g.year){ const y=document.createElement("span"); y.className="gy"; y.textContent=g.year; b.appendChild(y); }
+    if(g.caption){ const c=document.createElement("span"); c.className="gc"; c.textContent=g.caption; b.appendChild(c); }
+    b.onclick=()=>openLb(i); grid.appendChild(b);
+  });
+}
+function openLb(i){ lbIdx=i; lbConfirm=false; paintLb(); const d=$("#lb"); try{ d.showModal(); }catch(e){ d.setAttribute("open",""); } }
+function paintLb(){
+  const list=galList(); if(!list.length){ closeLb(); return; }
+  lbIdx=(lbIdx+list.length)%list.length; const g=list[lbIdx];
+  $("#lbImg").src=BLOB(g.assetId); $("#lbImg").alt=g.caption||"";
+  const cap=$("#lbCap"); cap.textContent=""; const s=document.createElement("small"); s.textContent=`${lbIdx+1} / ${list.length}${g.year?" · "+g.year:""}`; cap.append(s, g.caption||"");
+  const del=$("#lbDel"); del.hidden=!assets; del.textContent=lbConfirm?"Bấm lần nữa để xoá vĩnh viễn":"Xoá ảnh";
+  $("#lbEdit").hidden=!assets;
+  $("#lbMeta").hidden=!(canWrite&&pdb);
+}
+function openMeta(){
+  const g=galList()[lbIdx]; if(!g) return;
+  $("#lbCapIn").value=g.caption||""; $("#lbYearIn").value=g.year||"";
+  $("#lbForm").hidden=false; $("#lbCapIn").focus();
+}
+$("#lbMeta").onclick=openMeta;
+$("#lbMetaCancel").onclick=()=>{ $("#lbForm").hidden=true; };
+$("#lbForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const g=galList()[lbIdx]; if(!g||!pdb) return;
+  const year=$("#lbYearIn").value.trim();
+  if(year&&!/^(19|20)\d\d$/.test(year)){ $("#lbYearIn").setCustomValidity("Nhập năm 4 chữ số, ví dụ 2026, hoặc để trống."); $("#lbYearIn").reportValidity(); return; }
+  const caption=$("#lbCapIn").value.trim().slice(0,120);
+  const btn=$("#lbMetaSave"); btn.disabled=true;
+  try{ await pdb.doc("gallery/"+g.id).update({caption,year}); g.caption=caption; g.year=year; $("#lbForm").hidden=true; renderGallery(); paintLb(); }
+  catch(err){ $("#lbCap").textContent="Chưa lưu được ("+(err&&err.code||"lỗi")+")."; }
+  finally{ btn.disabled=false; }
+});
+$("#lbYearIn").addEventListener("input",e=>e.target.setCustomValidity(""));
+$("#lbEdit").onclick=async()=>{
+  const g=galList()[lbIdx]; if(!g||!assets||!pdb) return;
+  const src=g.origId&&ID_RE.test(g.origId)?g.origId:g.assetId;
+  const r=await openEditor({src:BLOB(src),aspect:null,maxEdge:2400,minEdge:1000,title:"Chỉnh ảnh: "+(g.caption||""),step:g.origId?"Đang chỉnh từ ảnh gốc":"",saveLabel:"Lưu ảnh đã chỉnh"});
+  if(!r||!r.blob) return;
+  try{
+    const up=await upBlob(r.blob);
+    await pdb.doc("gallery/"+g.id).update({assetId:up.id,origId:src});
+    const old=g.assetId; g.assetId=up.id; g.origId=src; paintLb(); renderGallery();
+    if(old!==src) await dropIfUnused([old]);
+  }catch(err){ $("#lbCap").textContent=uploadErr(err); }
+};
+function closeLb(){ const d=$("#lb"); try{ d.close(); }catch(e){ d.removeAttribute("open"); } }
+$("#lbPrev").onclick=()=>{lbIdx--; lbConfirm=false; $("#lbForm").hidden=true; paintLb();};
+$("#lbNext").onclick=()=>{lbIdx++; lbConfirm=false; $("#lbForm").hidden=true; paintLb();};
+$("#lbClose").onclick=closeLb;
+$("#lb").addEventListener("click",e=>{ if(e.target.id==="lb") closeLb(); });
+document.addEventListener("keydown",e=>{ if(!$("#lb").open||e.target.closest("input,textarea")) return; if(e.key==="ArrowLeft"){$("#lbPrev").click();} if(e.key==="ArrowRight"){$("#lbNext").click();} });
+function openLbReset(){ $("#lbForm").hidden=true; }
+$("#lb").addEventListener("close",openLbReset);
+
+/* ---------- tình trạng 2027 ---------- */
+const ST_LABEL={stay:"Ở lại HLE",renew:"Gia hạn hợp đồng",move:"Chuyển đội",fa:"Tự do (FA)",break:"Tạm nghỉ"};
+let st27=null;
+function renderStatus(){
+  const v=$("#stView"); v.textContent="";
+  const has=st27&&(st27.state||st27.team||st27.note);
+  if(!has){ const p=document.createElement("p"); p.className="s-empty"; p.textContent=canWrite&&pdb?"Chưa có thông tin cho mùa 2027. Bấm Cập nhật khi có tin hợp đồng hoặc chuyển nhượng.":"Chưa có thông tin cho mùa 2027."; v.appendChild(p); return; }
+  const m=document.createElement("div"); m.className="s-main";
+  const b=document.createElement("b"); b.textContent=st27.team||"Chưa rõ đội"; m.appendChild(b);
+  if(st27.state){ const s=document.createElement("span"); s.className="s-pill"; s.textContent=ST_LABEL[st27.state]||st27.state; m.appendChild(s); }
+  v.appendChild(m);
+  if(st27.note){ const n=document.createElement("p"); n.className="s-note"; n.textContent=st27.note; v.appendChild(n); }
+  const meta=document.createElement("p"); meta.className="s-meta";
+  if(st27.updatedAt){ meta.append("Cập nhật "+new Date(st27.updatedAt).toLocaleDateString("vi-VN")); }
+  if(typeof st27.url==="string"&&st27.url.startsWith("https://")){ meta.append(meta.textContent?" · ":""); const a=document.createElement("a"); a.href=st27.url; a.target="_blank"; a.rel="noopener"; a.textContent="Nguồn"; meta.appendChild(a); }
+  if(meta.childNodes.length) v.appendChild(meta);
+}
+$("#stEditBtn").onclick=()=>{ const s=st27||{}; $("#stState").value=s.state||""; $("#stTeam").value=s.team||""; $("#stNote").value=s.note||""; $("#stUrl").value=s.url||""; $("#stForm").hidden=false; $("#stView").hidden=true; $("#stEditBtn").hidden=true; $("#stState").focus(); };
+$("#stCancel").onclick=()=>{ $("#stForm").hidden=true; $("#stView").hidden=false; $("#stEditBtn").hidden=false; };
+$("#stForm").addEventListener("submit",async e=>{
+  e.preventDefault(); if(!pdb) return;
+  const url=$("#stUrl").value.trim();
+  if(url&&!url.startsWith("https://")){ $("#stUrl").setCustomValidity("Link cần bắt đầu bằng https://"); $("#stUrl").reportValidity(); return; }
+  const data={state:$("#stState").value,team:$("#stTeam").value.trim(),note:$("#stNote").value.trim(),url,updatedAt:Date.now()};
+  const btn=$("#stSave"); btn.disabled=true;
+  try{ await pdb.doc("status/y2027").set(data); st27=data; $("#stCancel").click(); renderStatus(); }
+  catch(err){ btn.textContent="Chưa lưu được, thử lại"; }
+  finally{ btn.disabled=false; }
+});
+$("#stUrl").addEventListener("input",e=>e.target.setCustomValidity(""));
+$("#lbDel").onclick=async()=>{
+  if(!lbConfirm){ lbConfirm=true; paintLb(); return; }
+  const g=galList()[lbIdx]; if(!g||!pdb) return;
+  try{
+    await pdb.doc("gallery/"+g.id).delete();
+    gal=gal.filter(x=>x.id!==g.id);
+    if(assets) await dropIfUnused([g.assetId,g.origId]);
+  }catch(err){ $("#lbCap").textContent="Không xoá được ("+(err&&err.code||"lỗi")+")."; return; }
+  lbConfirm=false; closeLb();
+};
+$("#galAdd").onclick=()=>{ $("#galPick").value=""; $("#galPick").click(); };
+$("#galPick").addEventListener("change",async e=>{
+  const files=[...(e.target.files||[])].filter(f=>/^image\/(png|jpeg|webp|gif)$/.test(f.type)&&f.size<=20*1024*1024);
+  if(!files.length||!assets||!pdb) return;
+  const btn=$("#galAdd"); btn.disabled=true;
+  for(let i=0;i<files.length;i++){
+    const f=files[i], url=URL.createObjectURL(f);
+    const ed=await openEditor({src:url,aspect:null,maxEdge:2400,minEdge:1000,title:"Chỉnh ảnh trước khi thêm vào thư viện",step:files.length>1?`Ảnh ${i+1}/${files.length} · Huỷ để bỏ qua ảnh này`:"",allowRaw:true,saveLabel:"Lưu và tải lên"});
+    URL.revokeObjectURL(url);
+    if(!ed) continue;
+    btn.textContent=`Đang tải ${i+1}/${files.length}…`;
+    const blob=ed.raw?f:ed.blob;
+    try{ const r=await upBlob(blob); let origId=null; if(!ed.raw){ try{ origId=(await upBlob(f)).id; }catch(_){} }
+      await pdb.collection("gallery").doc().set({assetId:r.id,...(origId?{origId}:{}),caption:f.name.replace(/\.[^.]+$/,"").slice(0,90),year:String(new Date(f.lastModified||Date.now()).getFullYear()),order:Date.now()}); }
+    catch(err){ if(err&&(err.code==="quota_or_state"||err.code==="rate_limited")) break; }
+  }
+  btn.disabled=false; btn.textContent=""; btn.append(icon("i-plus"),"Thêm ảnh");
+});
+
+/* ---------- sổ tay ---------- */
+const KINDS={all:"Tất cả",video:"Video",match:"Trận đấu",stat:"Chỉ số",news:"Tin tức",note:"Ghi chú"};
+let items=[], filter="all", confirming=null, col=null, canWrite=true;
+const statusEl=$("#nbStatus");
+try{ filter=localStorage.getItem("guma-filter")||"all"; }catch(e){}
+try{ $("#fDate").value=new Date().toISOString().slice(0,10);}catch(e){}
+function renderFilters(){
+  const box=$("#filters"); box.textContent="";
+  Object.entries(KINDS).forEach(([k,v])=>{
+    const n=k==="all"?items.length:items.filter(i=>i.kind===k).length;
+    const b=document.createElement("button"); b.type="button"; b.className="tab";
+    b.textContent=`${v} (${n})`; b.setAttribute("aria-pressed",String(filter===k));
+    b.onclick=()=>{filter=k; try{localStorage.setItem("guma-filter",k)}catch(e){} render();};
+    box.appendChild(b);
+  });
+}
+function render(){
+  renderFilters();
+  const ul=$("#entries"); ul.textContent="";
+  const list=items.filter(i=>filter==="all"||i.kind===filter);
+  if(!list.length){ const d=document.createElement("li"); d.className="empty"; d.textContent=items.length?"Chưa có mục nào thuộc loại này.":"Sổ tay đang trống. Dán link video YouTube hoặc trang gol.gg, thêm ghi chú rồi bấm Lưu."; ul.appendChild(d); return; }
+  list.forEach(it=>{
+    const li=document.createElement("li"); li.className="entry";
+    const top=document.createElement("div"); top.className="top";
+    const k=document.createElement("span"); k.className="k"; k.textContent=(KINDS[it.kind]||"Mục")+(it.date?" · "+it.date:""); top.appendChild(k);
+    if(canWrite){ const del=document.createElement("button"); del.className="del"; del.type="button"; del.setAttribute("aria-label","Xoá mục này"); del.appendChild(icon("i-trash")); del.onclick=()=>{confirming=it.id; render();}; top.appendChild(del); }
+    li.appendChild(top);
+    const b=document.createElement("b"); b.textContent=it.title||"(không tiêu đề)"; li.appendChild(b);
+    if(typeof it.url==="string"&&it.url.startsWith("https://")){ const a=document.createElement("a"); a.href=it.url; a.target="_blank"; a.rel="noopener"; a.textContent=it.url; li.appendChild(a); }
+    if(it.note){ const p=document.createElement("p"); p.textContent=it.note; li.appendChild(p); }
+    if(confirming===it.id){
+      const s=document.createElement("div"); s.className="sure"; s.append("Xoá vĩnh viễn mục này?");
+      const y=document.createElement("button"); y.type="button"; y.className="yes"; y.textContent="Xoá";
+      const n=document.createElement("button"); n.type="button"; n.textContent="Giữ lại";
+      y.onclick=async()=>{ y.disabled=true; try{ await col.doc(it.id).delete(); statusEl.textContent="Đã xoá."; }catch(e){ statusEl.textContent="Không xoá được ("+(e&&e.code||"lỗi")+")."; } confirming=null; render(); };
+      n.onclick=()=>{confirming=null; render();};
+      s.append(y,n); li.appendChild(s);
+    }
+    ul.appendChild(li);
+  });
+}
+render();
+
+(async()=>{
+  const db=await window.claude?.use?.("db");
+  if(!db){ statusEl.textContent="Không mở được kho lưu trữ ở chế độ xem này (cần đăng nhập claude.ai)."; return; }
+  pdb=db;
+  const user=await window.claude.use("user");
+  if(user){ try{ const w=await user.can("data.write"); if(w===false) canWrite=false; }catch(e){} }
+  assets=await window.claude.use("assets");
+  db.collection("champs").onSnapshot(s=>{ const m={}; s.docs.forEach(d=>{ const a=d.data().assetId; if(typeof a==="string") m[d.id]=a; }); champImg=m; renderChampViews(); },()=>{});
+  db.collection("photos").onSnapshot(s=>{ photos={}; s.docs.forEach(d=>{photos[d.id]=d.data();}); paintSlots(); },()=>{});
+  paintSlots();
+  $("#galAdd").hidden=!assets;
+  db.collection("gallery").orderBy("order","asc").onSnapshot(s=>{
+    gal=s.docs.map(d=>({id:d.id,...d.data()})).filter(g=>typeof g.assetId==="string"&&ID_RE.test(g.assetId));
+    renderGallery(); if($("#lb").open) paintLb();
+  },()=>{ $("#galGrid").textContent="Không tải được thư viện ảnh."; });
+  $("#stEditBtn").hidden=!canWrite; renderStatus();
+  db.doc("status/y2027").onSnapshot(s=>{ st27=s.exists?s.data():null; renderStatus(); },()=>{});
+
+  col=db.collection("journal");
+  $("#addForm").hidden=!canWrite;
+  let timer=setTimeout(()=>{statusEl.textContent="Chưa kết nối được kho lưu trữ, dữ liệu có thể chưa mới nhất.";},10000);
+  col.orderBy("createdAt","desc").onSnapshot(snap=>{
+    items=snap.docs.map(d=>({id:d.id,...d.data()}));
+    if(!snap.metadata.fromCache){ clearTimeout(timer); statusEl.textContent=`${items.length} mục đã lưu${canWrite?"":" · chỉ xem"}`; }
+    render();
+  },err=>{ clearTimeout(timer); statusEl.textContent="Mất kết nối kho lưu trữ ("+err.code+")."; });
+
+  $("#addForm").addEventListener("submit",async e=>{
+    e.preventDefault();
+    const title=$("#fTitle").value.trim(); if(!title) return;
+    const url=$("#fUrl").value.trim();
+    if(url&&!url.startsWith("https://")){ statusEl.textContent="Link cần bắt đầu bằng https://"; return; }
+    const btn=$("#fSave"); btn.disabled=true;
+    try{
+      await col.add({kind:$("#fKind").value,title,url,note:$("#fNote").value.trim(),date:$("#fDate").value,createdAt:Date.now()});
+      $("#fTitle").value=""; $("#fUrl").value=""; $("#fNote").value=""; statusEl.textContent="Đã lưu.";
+    }catch(err){
+      if(err&&err.code==="invalid_argument"){ canWrite=false; $("#addForm").hidden=true; statusEl.textContent="Bạn chỉ có quyền xem sổ tay này."; render(); }
+      else statusEl.textContent="Chưa lưu được ("+(err&&err.code||"lỗi")+"), thử lại sau.";
+    }finally{ btn.disabled=false; }
+  });
+})();
+</script>
+
+</body></html>
