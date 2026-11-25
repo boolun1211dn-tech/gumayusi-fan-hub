@@ -264,6 +264,49 @@ dialog.ed::backdrop{background:rgba(8,8,10,.82)}
 @media (max-width:640px){.r27g{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .cnw{display:inline-flex;align-items:center;gap:10px}
+/* fan corner */
+.fan{margin-bottom:48px}
+.fan-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch}
+.fc{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--ink);padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0}
+.fc > small{font:700 14px var(--mono);letter-spacing:.12em;color:var(--muted)}
+.fc-bday{background:var(--ink);color:#fff;border-color:var(--ink);border-top-color:var(--orange)}
+.fc-bday > small{color:#f9a66b}
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.cd div{background:#1d1d21;text-align:center;padding:6px 2px}
+.cd b{display:block;font:700 2rem/1 var(--display);font-variant-numeric:tabular-nums}
+.cd span{font-size:12.5px;color:#c2c2c8}
+.fc-bday p{margin:0;font-size:14.5px;color:#e4e4e7}
+.fc-bday .fc-sub{color:#a7a7ae;font-size:13.5px}
+.fc-bday.today .cd{display:none}
+.nm-t{display:block;font:700 1.6rem/1.15 var(--display);text-transform:uppercase}
+.fc-next p{margin:0;font-size:14.5px;color:var(--muted)}
+.nm-vs{font:700 1.35rem/1.15 var(--display)}
+.fc-last{border-top:1px solid var(--line);padding-top:8px}
+.fc-last small{font:700 13px var(--mono);letter-spacing:.12em;color:var(--muted)}
+.fc-last p b{font-family:var(--display);font-size:1.05rem;margin-right:6px}
+.soc{display:grid;gap:6px}
+.soc a{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--ink);min-height:48px;transition:border-color .2s,background-color .2s}
+.soc a:hover{border-color:var(--orange);background:#fff8f3}
+.soc .ic{width:22px;height:22px;flex:none;color:var(--orange-ink)}
+.soc span{display:grid;line-height:1.2;min-width:0}
+.soc b{font:700 1.05rem var(--display)}
+.soc i{font-style:normal;font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.news{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.news li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;font-size:14.5px;line-height:1.4}
+.news time{font:700 15px var(--display);color:var(--orange-ink)}
+.news li b{font:800 11.5px var(--display);letter-spacing:.06em;background:#15803d;color:#fff;padding:1px 6px;margin-right:4px}
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;display:grid;place-items:center;background:var(--orange);color:var(--ink);border:0;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.show{opacity:1;pointer-events:auto}
+.totop .ic{width:22px;height:22px}
+@media (max-width:1100px){.fan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .fan-grid{grid-template-columns:1fr}
+  .poster{min-height:62vh}
+  main{gap:36px}
+  .lower h2{font-size:1.45rem}
+  .events .srow .games{gap:6px}
+  .gm{padding:3px 8px 3px 3px}
+}
 /* live data (bản GitHub) */
 .livebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 12px;font-size:14.5px;color:var(--muted)}
 .livebar .dot{width:10px;height:10px;border-radius:50%;background:#15803d;flex:none}
@@ -644,7 +687,7 @@ dialog.ytd::backdrop{background:rgba(8,8,10,.9)}
   <div class="in">
     <a class="brand" href="#top">GUMAYUSI</a>
     <nav class="menu" id="menu" aria-label="Điều hướng">
-      <a href="#y2027">2027</a><a href="#season">Mùa 2026</a><a href="#titles">Danh hiệu</a><a href="#career">Hành trình</a><a href="#stats">Chỉ số</a><a href="#penta">Pentakill</a><a href="#lifts">Nâng cúp</a><a href="#gallery">Thư viện ảnh</a><a href="#media">Video</a><a href="#trivia">Fun fact</a>
+      <a href="#y2027">2027</a><a href="#fan">Góc fan</a><a href="#season">Mùa 2026</a><a href="#titles">Danh hiệu</a><a href="#career">Hành trình</a><a href="#stats">Chỉ số</a><a href="#penta">Pentakill</a><a href="#lifts">Nâng cúp</a><a href="#gallery">Thư viện ảnh</a><a href="#media">Video</a><a href="#trivia">Fun fact</a>
     </nav>
     <a class="nbbtn" href="#notebook"><svg class="ic"><use href="#i-book"/></svg>SỔ TAY</a>
     <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Mở menu"><svg class="ic"><use href="#i-menu"/></svg></button>
@@ -744,6 +787,41 @@ dialog.ytd::backdrop{background:rgba(8,8,10,.9)}
   </div>
 </section>
 
+<section class="wrap fan" id="fan" aria-labelledby="fanTitle">
+  <div class="sec-h"><div class="lower"><span class="k">FAN</span><h2 id="fanTitle">Góc fan</h2></div></div>
+  <div class="fan-grid">
+    <div class="fc fc-bday">
+      <small>SINH NHẬT GUMA · 06/02</small>
+      <div class="cd" id="bdCount" aria-live="polite"><div><b id="cdD">–</b><span>ngày</span></div><div><b id="cdH">–</b><span>giờ</span></div><div><b id="cdM">–</b><span>phút</span></div><div><b id="cdS">–</b><span>giây</span></div></div>
+      <p id="bdNote">Guma tròn 25 tuổi vào 06/02/2027.</p>
+      <p class="fc-sub" id="proDays"></p>
+    </div>
+    <div class="fc fc-next">
+      <small>TRẬN TIẾP THEO</small>
+      <div id="nextMatch"><b class="nm-t">Chưa có lịch</b><p>HLE đang nghỉ giữa mùa. Lịch mùa 2027 sẽ hiện ở đây khi có.</p></div>
+      <div class="fc-last" id="lastMatch"><small>TRẬN GẦN NHẤT</small><p><b>Worlds 2026 · 31/10</b> HLE 0–2 Bilibili Gaming</p></div>
+    </div>
+    <div class="fc fc-social">
+      <small>THEO DÕI GUMA</small>
+      <div class="soc">
+        <a href="https://www.youtube.com/@Gumayusi_Official" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg><span><b>YouTube</b><i>@Gumayusi_Official</i></span></a>
+        <a href="https://www.instagram.com/gumayusi" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span><b>Instagram</b><i>@gumayusi</i></span></a>
+        <a href="https://m.site.naver.com/1YOFK" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span><b>Kênh stream</b><i>Link từ kênh YouTube chính thức</i></span></a>
+        <a href="https://www.youtube.com/@HanwhaLifeEsports" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg><span><b>Hanwha Life Esports</b><i>YouTube của đội</i></span></a>
+      </div>
+    </div>
+    <div class="fc fc-news">
+      <small>MỚI CẬP NHẬT</small>
+      <ol class="news">
+        <li><time>24/11</time><span><b>OFFICIAL</b> HLE công bố Canyon gia nhập ở vị trí đi rừng</span></li>
+        <li><time>24/11</time><span>Guma ở lại HLE mùa 2027, hợp đồng đến 15/11/2027</span></li>
+        <li><time>23/11</time><span><b>OFFICIAL</b> Mowgli lên HLV trưởng, Life và S0NSTAR làm HLV</span></li>
+        <li><time>14/11</time><span>BLG vô địch Worlds 2026 sau khi thắng Gen.G 3–1</span></li>
+        <li><time>31/10</time><span>HLE dừng ở Swiss Stage Worlds 2026 với thành tích 2–3</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
 <main class="wrap">
   <section id="season">
     <div class="sec-h"><div class="lower"><span class="k">01</span><h2>Mùa giải 2026</h2></div></div>
@@ -912,6 +990,7 @@ dialog.ytd::backdrop{background:rgba(8,8,10,.9)}
   </section>
 </main>
 
+<button class="totop" id="toTop" type="button" aria-label="Lên đầu trang"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
 <footer><div class="wrap"><span>Trang fan không chính thức · Dữ liệu tổng hợp đến 24/11/2026</span><span>Ảnh do chủ trang tự tải lên</span></div></footer>
 <input type="file" id="filePick" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
 <input type="file" id="galPick" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
@@ -1069,6 +1148,11 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     const heroWR=[...document.querySelectorAll(".herobar .st")].find(s=>/TỈ LỆ THẮNG/.test(s.textContent));
     if(heroWR){ heroWR.querySelector("b").textContent=vn1(w/n*100,1)+"%"; const sp=heroWR.querySelector("span"); if(sp) sp.textContent=n+" ván"; }
+    /* Góc fan: ván gần nhất */
+    const lm=document.getElementById("lastMatch");
+    if(lm&&R[0]){ const r=R[0], win=r.w==="Yes", opp=r.team===r.t1?r.t2:r.t1, d=new Date(String(r.dt).replace(" ","T")+"Z");
+      const ev=String(r.ov||"").split("/")[0].replace("Season ","");
+      lm.textContent=""; lm.appendChild(el("small",null,"VÁN GẦN NHẤT")); const p=el("p"); p.append(el("b",null,`${ev} · ${isNaN(d)?"":d.toLocaleDateString("vi-VN")}`), `${win?"Thắng":"Thua"} vs ${opp||"?"} · ${r.c} ${r.k}/${r.d}/${r.a}`); lm.appendChild(p); }
     /* 6 ván gần nhất */
     const box=document.getElementById("recent");
     if(box){ box.textContent=""; const hd=el("div","hd"); hd.append(el("h3",null,"6 VÁN GẦN NHẤT"), el("span",null,"Leaguepedia")); box.appendChild(hd);
@@ -1089,7 +1173,21 @@ document.addEventListener("DOMContentLoaded",()=>{
     else { b.append("Chưa kết nối được Leaguepedia, đang hiện số liệu gol.gg ngày 24/11/2026."); const rb=el("button",null,"Thử lại"); rb.type="button"; rb.onclick=()=>run(true); b.appendChild(rb); }
   }
   async function run(force){ bar("loading"); try{ const c=await load(force); apply(c); bar("ok",c); }catch(e){ bar("err",null,e); } }
-  document.addEventListener("DOMContentLoaded",()=>run(false));
+  /* Góc fan: trận tiếp theo của HLE (bảng MatchSchedule) */
+  async function nextMatch(){
+    const box=document.getElementById("nextMatch"); if(!box) return;
+    try{
+      const now=new Date().toISOString().slice(0,19).replace("T"," ");
+      const p=new URLSearchParams({action:"cargoquery",format:"json",origin:"*",tables:"MatchSchedule=MS",fields:"MS.Team1=t1,MS.Team2=t2,MS.DateTime_UTC=dt,MS.OverviewPage=ov,MS.BestOf=bo",where:`(MS.Team1='Hanwha Life Esports' OR MS.Team2='Hanwha Life Esports') AND MS.DateTime_UTC >= '${now}'`,order_by:"MS.DateTime_UTC ASC",limit:"1"});
+      const r=await fetch(API+"?"+p.toString()); const j=await r.json(); const m=(j.cargoquery||[])[0];
+      if(!m) return;
+      const x=m.title, opp=x.t1==="Hanwha Life Esports"?x.t2:x.t1, d=new Date(String(x.dt).replace(" ","T")+"Z");
+      box.textContent=""; box.appendChild(el("b","nm-t",String(x.ov||"").split("/")[0].replace("Season ","")));
+      box.appendChild(el("div","nm-vs",`HLE vs ${opp||"TBD"}${x.bo?" · Bo"+x.bo:""}`));
+      box.appendChild(el("p",null,isNaN(d)?"":d.toLocaleString("vi-VN",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})+" (giờ máy bạn)"));
+    }catch(_){}
+  }
+  document.addEventListener("DOMContentLoaded",()=>{ run(false); nextMatch(); });
 })();
 </script>
 <script>
@@ -1315,6 +1413,24 @@ function renderDebut(){
   const src=el("p","src"); src.append("Nguồn: "); [["gol.gg","https://gol.gg/players/player-matchlist/3247/season-S10/split-ALL/tournament-ALL/"],["ONE Esports","https://www.oneesports.gg/league-of-legends/t1-debuts-new-adc-gumayusi-in-a-must-win-regional-final-match/"]].forEach(([t,u],i)=>{ if(i) src.append(" · "); const a=el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; src.appendChild(a); }); r.appendChild(src);
   box.append(l,r);
 }
+/* Góc fan: đếm ngược sinh nhật (giờ Hàn Quốc), số ngày thi đấu, nút lên đầu trang */
+(function(){
+  const KST=9*3600*1000, DEBUT_UTC=Date.UTC(2020,8,8);
+  function nextBday(now){ const k=new Date(now+KST); let y=k.getUTCFullYear(); let t=Date.UTC(y,1,6)-KST; if(t+86400000<=now){ y++; t=Date.UTC(y,1,6)-KST; } return {t,age:y-2002}; }
+  function tick(){
+    const now=Date.now(), {t,age}=nextBday(now), card=document.querySelector(".fc-bday"); if(!card) return;
+    const left=t-now;
+    if(left<=0){ card.classList.add("today"); document.getElementById("bdNote").textContent=`Hôm nay là sinh nhật Guma! Chúc mừng tuổi ${age}.`; }
+    else { card.classList.remove("today");
+      const d=Math.floor(left/86400000), h=Math.floor(left%86400000/3600000), m=Math.floor(left%3600000/60000), s=Math.floor(left%60000/1000);
+      document.getElementById("cdD").textContent=d; document.getElementById("cdH").textContent=String(h).padStart(2,"0"); document.getElementById("cdM").textContent=String(m).padStart(2,"0"); document.getElementById("cdS").textContent=String(s).padStart(2,"0");
+      const bd=new Date(t+KST); document.getElementById("bdNote").textContent=`Guma tròn ${age} tuổi vào 06/02/${bd.getUTCFullYear()} (giờ Hàn Quốc).`; }
+    const pd=Math.floor((now-DEBUT_UTC)/86400000); document.getElementById("proDays").textContent=`Đã thi đấu chuyên nghiệp ${pd.toLocaleString("vi-VN")} ngày, từ trận debut 08/09/2020.`;
+  }
+  tick(); setInterval(tick,1000);
+  const tt=document.getElementById("toTop");
+  if(tt){ addEventListener("scroll",()=>tt.classList.toggle("show",scrollY>900),{passive:true}); tt.onclick=()=>{ scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); const b=document.querySelector(".brand"); if(b) b.focus({preventScroll:true}); }; }
+})();
 function renderChampViews(){ renderY26(); renderEvents(); renderChampTable(); renderPentas(); renderSkins(); renderDebut(); }
 
 (function(){
